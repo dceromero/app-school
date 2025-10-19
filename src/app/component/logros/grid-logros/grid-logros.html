@@ -1,0 +1,40 @@
+<p-fieldset legend="Logros">
+<div>
+<div class="flex mb-3 justify-end">
+<button pButton class="p-button-info">Adicionar</button>
+</div>
+  <hr>
+    <p-table
+        [value]="customers"
+        [paginator]="true"
+        [rows]="5"
+        [tableStyle]="{ 'min-width': '50rem' }"
+        showGridlines
+        [rowsPerPageOptions]="[5, 10, 20]"
+    >
+        <ng-template #header>
+            <tr>
+                <th style="width:45%">Descripcion</th>
+                <th style="width:10%">N-1</th>
+                <th style="width:10%">N-2</th>
+                <th style="width:10%">N-3</th>
+                <th style="width:10%">Total</th>
+                <th style="width:20%">Acciones</th>
+            </tr>
+        </ng-template>
+        <ng-template #body let-customer>
+            <tr>
+                <td style="font-size: 10px;">{{ customer.name }}</td>
+                <td>{{ customer.n1}}</td>
+                <td>{{ customer.n2}}</td>
+                <td>{{ customer.n3 }}</td>
+                <td>{{ customer.n3 + customer.n2 + customer.n1 }}</td>
+                <td>
+                    <button pButton type="button" icon="pi pi-pencil" class="p-button-rounded p-button-info mr-2"></button>
+                    <button pButton type="button" icon="pi pi-trash" class="p-button-rounded p-button-danger"></button>
+                </td>
+            </tr>
+        </ng-template>
+    </p-table>
+</div>
+</p-fieldset>
