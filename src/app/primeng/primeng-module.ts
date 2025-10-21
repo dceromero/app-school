@@ -13,7 +13,7 @@ import { MenuModule } from 'primeng/menu';
 import { AvatarModule } from 'primeng/avatar';
 import { AvatarGroupModule } from 'primeng/avatargroup';
 import { PanelMenuModule } from 'primeng/panelmenu';
-
+import { DialogModule } from 'primeng/dialog';
 @NgModule({
   declarations: [],
   exports: [
@@ -30,7 +30,8 @@ import { PanelMenuModule } from 'primeng/panelmenu';
     TextareaModule,
     ToggleSwitchModule,
     TableModule,
-    PanelMenuModule
+    PanelMenuModule,
+    DialogModule
   ]
 })
 export class PrimengModule { }

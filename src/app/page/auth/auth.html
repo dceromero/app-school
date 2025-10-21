@@ -1,24 +1,32 @@
-<p-card class="auth-card">
-  <ng-template #title>
-    <div class="text-center">
-      <h1>Iniciar Sesión</h1>
+<form [formGroup]="loginForm">
+  <p-card class="auth-card">
+    <ng-template #title>
+      <div class="text-center">
+        <h1>Iniciar Sesión</h1>
+      </div>
+    </ng-template>
+    <ng-template #subtitle>
+      <div class="border-line">
+        <p-floatlabel variant="on">
+          <input pInputText id="txtUser" autocomplete="off" fluid  formControlName="nombreUsu"/>
+          <label for="txtUser">Usuario</label>
+        </p-floatlabel>
+        <p-floatlabel variant="on" class="mt-3">
+          <p-password id="txtpsw" [feedback]="false" [toggleMask]="true" fluid formControlName="password"/>
+          <label for="txtpsw">Password</label>
+        </p-floatlabel>
+      </div>
+    </ng-template>
+    <ng-template #footer>
+      <div class="text-center">
+        <p-button label="Ingresar" severity="info" class="text-center" (click)="loadLogin()" />
+      </div>
+    </ng-template>
+  </p-card>
+  <p-dialog header="info" [(visible)]="visible" [modal]="true" position="top">
+    <p>{{messageService}}</p>
+    <div class="flex justify-center mt-3">
+        <p-button label="Cerrar" severity="secondary" (click)="visible = false" />
     </div>
-  </ng-template>
-  <ng-template #subtitle>
-    <div class="border-line">
-      <p-floatlabel variant="on">
-        <input pInputText id="txtUser" autocomplete="off" fluid />
-        <label for="txtUser">Usuario</label>
-      </p-floatlabel>
-      <p-floatlabel variant="on" class="mt-3">
-        <p-password id="txtpsw" [feedback]="false" [toggleMask]="true" fluid />
-        <label for="txtpsw">Password</label>
-      </p-floatlabel>
-    </div>
-  </ng-template>
-  <ng-template #footer>
-    <div class="text-center">
-      <p-button label="Ingresar" severity="info" class="text-center" />
-    </div>
-  </ng-template>
-</p-card>
+  </p-dialog>
+</form>
