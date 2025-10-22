@@ -1,15 +1,15 @@
 import {
   BaseComponent
-} from "./chunk-S46I45YZ.js";
+} from "./chunk-MI46HVC3.js";
 import {
   BaseStyle
-} from "./chunk-46CYCXZ5.js";
+} from "./chunk-VIMWQC26.js";
 import {
   SharedModule
-} from "./chunk-PFSON5JL.js";
+} from "./chunk-SRXKK3CD.js";
 import {
   CommonModule
-} from "./chunk-OE2EZAYT.js";
+} from "./chunk-2EBDC4XD.js";
 import "./chunk-W2WIUP6R.js";
 import {
   ChangeDetectionStrategy,
@@ -19,21 +19,24 @@ import {
   Input,
   NgModule,
   ViewEncapsulation,
-  inject,
   setClassMetadata,
   ɵɵInheritDefinitionFeature,
   ɵɵProvidersFeature,
   ɵɵclassMap,
   ɵɵclassProp,
   ɵɵdefineComponent,
-  ɵɵdefineInjectable,
-  ɵɵdefineInjector,
   ɵɵdefineNgModule,
   ɵɵgetInheritedFactory,
   ɵɵprojection,
   ɵɵprojectionDef,
   ɵɵstyleMap
-} from "./chunk-ZH5EVEIS.js";
+} from "./chunk-QOJR2O7C.js";
+import {
+  inject,
+  ɵɵdefineInjectable,
+  ɵɵdefineInjector
+} from "./chunk-NZYFSM4L.js";
+import "./chunk-RSS3ODKE.js";
 import "./chunk-WDMUDEB6.js";
 
 // node_modules/primeng/fesm2022/primeng-avatargroup.mjs

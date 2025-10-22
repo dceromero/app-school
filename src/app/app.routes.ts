@@ -1,5 +1,6 @@
 import { Routes } from '@angular/router';
 import Logros from './page/logros/logros';
+import { NotAuthGuard } from './guards/not-auth-guard';
 
 export const routes: Routes = [
   {
@@ -9,6 +10,7 @@ export const routes: Routes = [
   {
     path: 'dashboard',
     loadComponent: () => import('./page/dashboard/dashboard'),
+    canMatch: [NotAuthGuard],
     children: [
       {
         path: 'logros',

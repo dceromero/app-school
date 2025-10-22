@@ -1,17 +1,17 @@
 import {
   BaseComponent
-} from "./chunk-S46I45YZ.js";
+} from "./chunk-MI46HVC3.js";
 import {
   BaseStyle
-} from "./chunk-46CYCXZ5.js";
+} from "./chunk-VIMWQC26.js";
 import {
   SharedModule
-} from "./chunk-PFSON5JL.js";
+} from "./chunk-SRXKK3CD.js";
 import {
   CommonModule,
   NgClass,
   NgIf
-} from "./chunk-OE2EZAYT.js";
+} from "./chunk-2EBDC4XD.js";
 import "./chunk-W2WIUP6R.js";
 import {
   ChangeDetectionStrategy,
@@ -22,7 +22,6 @@ import {
   NgModule,
   Output,
   ViewEncapsulation,
-  inject,
   setClassMetadata,
   ɵɵInheritDefinitionFeature,
   ɵɵProvidersFeature,
@@ -30,8 +29,6 @@ import {
   ɵɵattribute,
   ɵɵclassMap,
   ɵɵdefineComponent,
-  ɵɵdefineInjectable,
-  ɵɵdefineInjector,
   ɵɵdefineNgModule,
   ɵɵelement,
   ɵɵelementEnd,
@@ -44,14 +41,20 @@ import {
   ɵɵprojectionDef,
   ɵɵproperty,
   ɵɵreference,
-  ɵɵresetView,
-  ɵɵrestoreView,
   ɵɵsanitizeUrl,
   ɵɵtemplate,
   ɵɵtemplateRefExtractor,
   ɵɵtext,
   ɵɵtextInterpolate
-} from "./chunk-ZH5EVEIS.js";
+} from "./chunk-QOJR2O7C.js";
+import {
+  inject,
+  ɵɵdefineInjectable,
+  ɵɵdefineInjector,
+  ɵɵresetView,
+  ɵɵrestoreView
+} from "./chunk-NZYFSM4L.js";
+import "./chunk-RSS3ODKE.js";
 import "./chunk-WDMUDEB6.js";
 
 // node_modules/@primeuix/styles/dist/avatar/index.mjs

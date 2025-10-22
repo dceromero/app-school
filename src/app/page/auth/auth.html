@@ -24,9 +24,9 @@
     </ng-template>
   </p-card>
   <p-dialog header="info" [(visible)]="visible" [modal]="true" position="top">
-    <p>{{messageService}}</p>
+    <p>{{messageService()}}</p>
     <div class="flex justify-center mt-3">
-        <p-button label="Cerrar" severity="secondary" (click)="visible = false" />
+        <p-button label="Cerrar" severity="secondary" (click)="visible.set(false)" />
     </div>
   </p-dialog>
 </form>

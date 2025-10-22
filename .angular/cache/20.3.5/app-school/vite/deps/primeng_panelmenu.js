@@ -1,9 +1,10 @@
 import {
   Tooltip,
   TooltipModule
-} from "./chunk-4GA2OGBG.js";
+} from "./chunk-BFNDZWKK.js";
 import "./chunk-P5652PBR.js";
-import "./chunk-Y44ZMSYF.js";
+import "./chunk-QNZEB6OU.js";
+import "./chunk-R7ILZQMC.js";
 import {
   animate,
   state,
@@ -11,25 +12,21 @@ import {
   transition,
   trigger
 } from "./chunk-E7UKXGHB.js";
-import "./chunk-FHF2ITE4.js";
 import {
   ChevronDownIcon,
   ChevronRightIcon
-} from "./chunk-S6WD7MJT.js";
+} from "./chunk-7W45ZZVQ.js";
+import {
+  BaseComponent
+} from "./chunk-MI46HVC3.js";
+import {
+  BaseStyle
+} from "./chunk-VIMWQC26.js";
 import {
   RouterLink,
   RouterLinkActive,
   RouterModule
-} from "./chunk-NXS6VEIB.js";
-import "./chunk-VSPWARTM.js";
-import "./chunk-2CTQUL5P.js";
-import "./chunk-NHEIAA2H.js";
-import {
-  BaseComponent
-} from "./chunk-S46I45YZ.js";
-import {
-  BaseStyle
-} from "./chunk-46CYCXZ5.js";
+} from "./chunk-AEXQBA3O.js";
 import {
   PrimeTemplate,
   Q,
@@ -43,14 +40,17 @@ import {
   s2 as s,
   s3 as s2,
   z
-} from "./chunk-PFSON5JL.js";
+} from "./chunk-SRXKK3CD.js";
+import "./chunk-AS56K5GA.js";
+import "./chunk-PUM4OY22.js";
+import "./chunk-62JVWG2J.js";
 import {
   CommonModule,
   NgForOf,
   NgIf,
   NgStyle,
   NgTemplateOutlet
-} from "./chunk-OE2EZAYT.js";
+} from "./chunk-2EBDC4XD.js";
 import "./chunk-W2WIUP6R.js";
 import {
   ChangeDetectionStrategy,
@@ -65,12 +65,8 @@ import {
   ViewChild,
   ViewEncapsulation,
   booleanAttribute,
-  computed,
-  forwardRef,
-  inject,
   numberAttribute,
   setClassMetadata,
-  signal,
   ɵɵInheritDefinitionFeature,
   ɵɵNgOnChangesFeature,
   ɵɵProvidersFeature,
@@ -79,8 +75,6 @@ import {
   ɵɵclassMap,
   ɵɵcontentQuery,
   ɵɵdefineComponent,
-  ɵɵdefineInjectable,
-  ɵɵdefineInjector,
   ɵɵdefineNgModule,
   ɵɵelement,
   ɵɵelementContainer,
@@ -92,15 +86,12 @@ import {
   ɵɵgetInheritedFactory,
   ɵɵlistener,
   ɵɵloadQuery,
-  ɵɵnamespaceSVG,
   ɵɵnextContext,
   ɵɵproperty,
   ɵɵpureFunction0,
   ɵɵpureFunction1,
   ɵɵqueryRefresh,
   ɵɵreference,
-  ɵɵresetView,
-  ɵɵrestoreView,
   ɵɵsanitizeHtml,
   ɵɵsanitizeUrl,
   ɵɵtemplate,
@@ -108,7 +99,19 @@ import {
   ɵɵtext,
   ɵɵtextInterpolate,
   ɵɵviewQuery
-} from "./chunk-ZH5EVEIS.js";
+} from "./chunk-QOJR2O7C.js";
+import {
+  computed,
+  forwardRef,
+  inject,
+  signal,
+  ɵɵdefineInjectable,
+  ɵɵdefineInjector,
+  ɵɵnamespaceSVG,
+  ɵɵresetView,
+  ɵɵrestoreView
+} from "./chunk-NZYFSM4L.js";
+import "./chunk-RSS3ODKE.js";
 import "./chunk-WDMUDEB6.js";
 
 // node_modules/@primeuix/styles/dist/panelmenu/index.mjs

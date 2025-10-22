@@ -1,4 +1,11 @@
- <p-panelmenu [model]="items" class="w-full md:w-80" />
+<div class="border-line w-80">
+    <div class="flex items-center gap-2">
+        <p-avatar [label]=" this.authService.user()!.fullname.charAt(0) " shape="circle" size="large" />
+        <span class="inline-flex flex-col">
+            <span class="font-bold">{{ this.authService.user()!.fullname }}</span>
+            <span class="text-sm">{{ this.authService.user()!.userGroup }}</span>
+        </span>
+    </div>
 
-
-
+</div>
+<p-panelmenu [model]=" this.menuResources.value()" class="w-full md:w-80" />

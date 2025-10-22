@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { PrimengModule } from '../../primeng/primeng-module';
 import { AuthService } from '../../services/auth/auth-service';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
@@ -20,22 +20,22 @@ export class Auth {
     password: ['', Validators.required]
   });
 
-  visible: boolean = false;
-  messageService: string = '';
+  visible = signal<boolean>(false);
+  messageService = signal<string>('');
 
 
 
   loadLogin() {
     if (this.loginForm.valid) {
       this.authService.login(this.loginForm.value).subscribe({
-        next: (res) => {
-          localStorage.setItem('token', res.token);
-          this.router.navigate(['/dashboard']);
+        next: (isValid) => {
+          if (!isValid) {
+            this.messageService.set('Credenciales incorrectas');
+            this.visible.set(true);
+            return;
+          }
+          this.router.navigateByUrl('/dashboard');
         },
-        error: (err) => {
-          this.messageService = err.error;
-          this.visible = true;
-        }
       });
     }
   }

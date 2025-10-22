@@ -1,11 +1,22 @@
 import {
   Tooltip,
   TooltipModule
-} from "./chunk-4GA2OGBG.js";
+} from "./chunk-BFNDZWKK.js";
 import {
   zindexutils
 } from "./chunk-P5652PBR.js";
-import "./chunk-Y44ZMSYF.js";
+import {
+  Badge,
+  BadgeModule
+} from "./chunk-7TWQPXQG.js";
+import {
+  Ripple
+} from "./chunk-J5DCA37D.js";
+import {
+  ConnectedOverlayScrollHandler,
+  DomHandler
+} from "./chunk-QNZEB6OU.js";
+import "./chunk-R7ILZQMC.js";
 import {
   animate,
   style,
@@ -13,32 +24,16 @@ import {
   trigger
 } from "./chunk-E7UKXGHB.js";
 import {
-  Badge,
-  BadgeModule
-} from "./chunk-TO4ZGTZD.js";
+  BaseComponent
+} from "./chunk-MI46HVC3.js";
 import {
-  Ripple
-} from "./chunk-BDVOETJN.js";
-import {
-  ConnectedOverlayScrollHandler,
-  DomHandler
-} from "./chunk-FHF2ITE4.js";
+  BaseStyle
+} from "./chunk-VIMWQC26.js";
 import {
   RouterLink,
   RouterLinkActive,
   RouterModule
-} from "./chunk-NXS6VEIB.js";
-import {
-  DomSanitizer
-} from "./chunk-VSPWARTM.js";
-import "./chunk-2CTQUL5P.js";
-import "./chunk-NHEIAA2H.js";
-import {
-  BaseComponent
-} from "./chunk-S46I45YZ.js";
-import {
-  BaseStyle
-} from "./chunk-46CYCXZ5.js";
+} from "./chunk-AEXQBA3O.js";
 import {
   D,
   I,
@@ -50,7 +45,12 @@ import {
   bt,
   s3 as s,
   z
-} from "./chunk-PFSON5JL.js";
+} from "./chunk-SRXKK3CD.js";
+import {
+  DomSanitizer
+} from "./chunk-AS56K5GA.js";
+import "./chunk-PUM4OY22.js";
+import "./chunk-62JVWG2J.js";
 import {
   CommonModule,
   NgForOf,
@@ -58,7 +58,7 @@ import {
   NgStyle,
   NgTemplateOutlet,
   isPlatformBrowser
-} from "./chunk-OE2EZAYT.js";
+} from "./chunk-2EBDC4XD.js";
 import "./chunk-W2WIUP6R.js";
 import {
   ChangeDetectionStrategy,
@@ -76,13 +76,9 @@ import {
   ViewChild,
   ViewEncapsulation,
   booleanAttribute,
-  computed,
-  forwardRef,
-  inject,
   input,
   numberAttribute,
   setClassMetadata,
-  signal,
   ɵɵInheritDefinitionFeature,
   ɵɵProvidersFeature,
   ɵɵadvance,
@@ -90,8 +86,6 @@ import {
   ɵɵclassMap,
   ɵɵcontentQuery,
   ɵɵdefineComponent,
-  ɵɵdefineInjectable,
-  ɵɵdefineInjector,
   ɵɵdefineNgModule,
   ɵɵdefinePipe,
   ɵɵdirectiveInject,
@@ -114,8 +108,6 @@ import {
   ɵɵpureFunction2,
   ɵɵqueryRefresh,
   ɵɵreference,
-  ɵɵresetView,
-  ɵɵrestoreView,
   ɵɵsanitizeHtml,
   ɵɵsanitizeUrl,
   ɵɵstyleMap,
@@ -124,7 +116,18 @@ import {
   ɵɵtext,
   ɵɵtextInterpolate,
   ɵɵviewQuery
-} from "./chunk-ZH5EVEIS.js";
+} from "./chunk-QOJR2O7C.js";
+import {
+  computed,
+  forwardRef,
+  inject,
+  signal,
+  ɵɵdefineInjectable,
+  ɵɵdefineInjector,
+  ɵɵresetView,
+  ɵɵrestoreView
+} from "./chunk-NZYFSM4L.js";
+import "./chunk-RSS3ODKE.js";
 import "./chunk-WDMUDEB6.js";
 
 // node_modules/@primeuix/styles/dist/menu/index.mjs
