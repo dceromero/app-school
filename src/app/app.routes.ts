@@ -13,6 +13,10 @@ export const routes: Routes = [
     canMatch: [NotAuthGuard],
     children: [
       {
+        path: '',
+        loadComponent: () => import('./component/dash/dash')
+      },
+      {
         path: 'logros',
         loadComponent: () => import('./page/logros/logros')
       }

@@ -5,7 +5,7 @@ export class MenuMapper {
     static mapToMenuItems(menuData: MenuInterface[] ): MenuItem[] {
         return menuData.map((item) => ({
             label: item.Descripcion,
-            icon: 'fa-solid fa-gear',
+            icon: item.Icon,
             items: item.subMenu ? MenuMapper.mapToSubMenuItems(item.subMenu) : [],
         }));
     }
@@ -13,7 +13,8 @@ export class MenuMapper {
     private static mapToSubMenuItems(subMenuData: SubMenu[]): MenuItem[] {
         return subMenuData.map((subItem) => ({
             label: subItem.Descripcion,
-            icon: 'fa-solid fa-plus',
+            icon: subItem.Icon,
+            url: subItem.Url,
         }));
     }
 }

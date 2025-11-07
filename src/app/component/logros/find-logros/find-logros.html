@@ -1,34 +1,67 @@
-<p-fieldset legend="Buscar Logros">
-  <div class="grid grid-cols-3">
-    <div>
-      <p-floatlabel variant="on">
-        <input pInputText id="txtYear" autocomplete="off" fluid />
-        <label for="txtYear">Año</label>
-      </p-floatlabel>
+<form [formGroup]="formFindLogros">
+  <p-fieldset legend="Buscar Logros">
+    <div class="grid grid-cols-4">
+      <div>
+        <p-floatlabel variant="on">
+          <p-select formControlName="grado" size="small" [options]="gradosResources.value()" optionValue="codGrado" optionLabel="descGrado"
+            [filter]="true" filterBy="descGrado" [showClear]="true" fluid (onChange)="selectedGrado($event.value)">
+            <ng-template #selectedItem let-selectedOption>
+              <div class="flex items-center gap-2">
+                <div>{{ selectedOption.codGrado }} - {{ selectedOption.descGrado }}</div>
+              </div>
+            </ng-template>
+            <ng-template let-grado #item>
+              <div class="flex items-center gap-2">
+                <div>{{ grado.codGrado }} - {{ grado.descGrado }}</div>
+              </div>
+            </ng-template>
+          </p-select>
+          <label for="txtGrado">Grado</label>
+        </p-floatlabel>
+      </div>
+      <div>
+        <p-floatlabel variant="on">
+          <p-select formControlName="asignatura" size="small" [options]="this.listAsignaturas" optionValue="codAsignatura" optionLabel="asignatura"
+            [filter]="true" filterBy="asignatura" [showClear]="true" fluid>
+            <ng-template #selectedItem let-selectedOption>
+              <div class="flex items-center gap-2">
+                <div>{{ selectedOption.asignatura }}</div>
+              </div>
+            </ng-template>
+            <ng-template let-asignatura #item>
+              <div class="flex items-center gap-2">
+                <div> {{ asignatura.asignatura }}</div>
+              </div>
+            </ng-template>
+          </p-select>
+
+          <label for="txtAsignatura">Asignatura</label>
+        </p-floatlabel>
+      </div>
+      <div>
+        <p-floatlabel variant="on">
+          <p-select formControlName="periodo" size="small" [options]="periodos" optionValue="idPeriodo" optionLabel="periodo" [filter]="true"
+            filterBy="periodo" [showClear]="true" fluid>
+            <ng-template #selectedItem let-selectedOption>
+              <div class="flex items-center gap-2">
+                <div>{{ selectedOption.periodo }}</div>
+              </div>
+            </ng-template>
+            <ng-template let-periodo #item>
+              <div class="flex items-center gap-2">
+                <div>{{ periodo.periodo }}</div>
+              </div>
+            </ng-template>
+          </p-select>
+          <label for="txtPeriodo">Periodo</label>
+        </p-floatlabel>
+      </div>
+      <div>
+        <button pButton class="w-full" (click)="findLogros()" [disabled]="formFindLogros.invalid">
+          <i class="pi pi-search" pButtonIcon></i>
+          <span pButtonLabel>Buscar</span>
+        </button>
+      </div>
     </div>
-    <div>
-      <p-floatlabel variant="on">
-        <input pInputText id="txtGrado" autocomplete="off" fluid />
-        <label for="txtGrado">Grado</label>
-      </p-floatlabel>
-    </div>
-    <div>
-      <p-floatlabel variant="on">
-        <input pInputText id="txtAsignatura" autocomplete="off" fluid />
-        <label for="txtAsignatura">Asignatura</label>
-      </p-floatlabel>
-    </div>
-    <div>
-      <p-floatlabel variant="on">
-        <input pInputText id="txtPeriodo" autocomplete="off" fluid />
-        <label for="txtPeriodo">Periodo</label>
-      </p-floatlabel>
-    </div>
-    <div>
-      <button pButton class="w-full">
-        <i class="pi pi-search" pButtonIcon></i>
-        <span pButtonLabel>Buscar</span>
-      </button>
-    </div>
-  </div>
-</p-fieldset>
+  </p-fieldset>
+</form>

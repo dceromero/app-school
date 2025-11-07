@@ -14,6 +14,7 @@ import { AvatarModule } from 'primeng/avatar';
 import { AvatarGroupModule } from 'primeng/avatargroup';
 import { PanelMenuModule } from 'primeng/panelmenu';
 import { DialogModule } from 'primeng/dialog';
+import { InputNumberModule } from 'primeng/inputnumber';
 
 @NgModule({
   declarations: [],
@@ -32,7 +33,8 @@ import { DialogModule } from 'primeng/dialog';
     ToggleSwitchModule,
     TableModule,
     PanelMenuModule,
-    DialogModule
+    DialogModule,
+    InputNumberModule
   ]
 })
 export class PrimengModule { }

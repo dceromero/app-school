@@ -1,5 +1,6 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, input, OnInit, output } from '@angular/core';
 import { PrimengModule } from '../../../primeng/primeng-module';
+import { FindLogroInterface, LogroInterface } from '../../../interfaces/logros/logro-interface';
 
 @Component({
   selector: 'app-grid-logros',
@@ -7,12 +8,13 @@ import { PrimengModule } from '../../../primeng/primeng-module';
   templateUrl: './grid-logros.html',
   styleUrl: './grid-logros.css'
 })
-export class GridLogros implements OnInit{
-
-  customers: any[] = [];
-
-  ngOnInit(): void {
-  
+export class GridLogros {
+  outDialog = output<string>();
+  inLogros = input<LogroInterface[]>();
+  inFindLogros = input.required<FindLogroInterface | null>();
+ 
+  viewDialog(codLogro: string) {
+    this.outDialog.emit(codLogro);
   }
 
 }

@@ -1,0 +1,56 @@
+<p-dialog header="Ingreso o Actualización de Logros" [visible]="openForm().length > 0" [modal]="true" position="top">
+    <form [formGroup]="formLogros">
+        <div class="grid grid-cols-2 mt-2 gap-4">
+            <div>
+                <p-floatlabel variant="on">
+                    <p-inputnumber size="small" id="txtcodLog" [ngModel]="openForm()" fluid  formControlName="codLogro"/>
+                    <label for="txtcodLog">Código logro</label>
+                </p-floatlabel>
+            </div>
+            <div>
+                <p-floatlabel variant="on">
+                    <p-inputnumber size="small" id="txtCantNotas" fluid  formControlName="cantNotas"/>
+                    <label for="txtCantNotas">Cantidad de Notas</label>
+                </p-floatlabel>
+            </div>
+            <div>
+                <p-floatlabel variant="on">
+                     <p-inputnumber size="small" id="txtnc1" mode="decimal" fluid
+                     formControlName="nota1" [disabled]=" this.convertToNumber(formLogros.get('cantNotas')?.value) < 1"/>
+                    <label for="txtnc1">Nota 1</label>
+                </p-floatlabel>
+            </div>
+            <div>
+                <p-floatlabel variant="on">
+                     <p-inputnumber size="small" id="txtnc2" mode="decimal" fluid
+                     formControlName="nota2" [disabled]=" this.convertToNumber(formLogros.get('cantNotas')?.value) < 2"/>
+                    <label for="txtnc2">Nota 2</label>
+                </p-floatlabel>
+            </div>
+            <div>
+                <p-floatlabel variant="on">
+                    <p-inputnumber size="small"  id="txtnc3" mode="decimal" fluid
+                    formControlName="nota3" [disabled]=" this.convertToNumber(formLogros.get('cantNotas')?.value) < 3"/>
+                    <label for="txtnc3">Nota 3</label>
+                </p-floatlabel>
+            </div>
+            <div>
+                <p-floatlabel variant="on">
+                    <p-inputnumber size="small" id="txtnc4" mode="decimal" fluid
+                    formControlName="nota4" [disabled]=" this.convertToNumber(formLogros.get('cantNotas')?.value) < 4"/>
+                    <label for="txtnc4">Nota 4</label>
+                </p-floatlabel>
+            </div>
+        </div>
+        <div class="grid grid-cols-1 mt-3">
+            <p-floatlabel variant="on">
+                <textarea pTextarea id="txtTextoLg" rows="5" cols="30" style="resize: none" fluid formControlName="descLogro"></textarea>
+                <label for="txtTextoLg">Descripción</label>
+            </p-floatlabel>
+        </div>
+        <div class="flex justify-center mt-3 gap-4">
+            <p-button label="Guardar" severity="success" class="" (click)="saveLogro()" />
+            <p-button label="Cerrar" severity="secondary" (click)="closeForm()" />
+        </div>
+    </form>
+</p-dialog>

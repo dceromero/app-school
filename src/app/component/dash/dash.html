@@ -1,0 +1,29 @@
+<p-fieldset legend="Fecha de Vencimiento de Logros y Notas">   
+<p-table
+    [value]="this.vencimientoResources.value()!"
+    [paginator]="true"
+    [rows]="5"    
+    [rowsPerPageOptions]="[5, 10, 20]"
+    showGridlines
+    stripedRows 
+    size="small"
+    class="text-center"
+    >
+        <ng-template #header >
+            <tr>
+                <th pSortableColumn="grado">Grado <p-sortIcon field="grado" /></th>
+                <th pSortableColumn="grupo">Grupo <p-sortIcon field="grupo" /></th>
+                <th pSortableColumn="asignatura">Asignatura <p-sortIcon field="asignatura" /></th>
+                <th pSortableColumn="fechaVencimiento">Fecha Vencimiento <p-sortIcon field="fechaVencimiento" /></th>
+            </tr>
+        </ng-template>
+        <ng-template #body let-vencimiento>
+            <tr>
+                <td>{{ vencimiento.grado }}</td>
+                <td>{{ vencimiento.grupo }}</td>
+                <td>{{ vencimiento.asignatura }}</td>
+                <td>{{ vencimiento.fechaVencimiento  }}</td>
+            </tr>
+        </ng-template>
+</p-table>
+</p-fieldset>
