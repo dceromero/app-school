@@ -1,18 +1,19 @@
 export interface LogroInterface {
-    codLogro:  string;
-    textoLg:    string;
+    codLogro: string;
+    textoLg: string;
     cantNotas: number;
-    pc1:       number;
-    pc2:       number;
-    pc3:       number;
-    pc4:       number;
+    pc1: number;
+    pc2: number;
+    pc3: number;
+    pc4: number;
+    cantLogros: number;
 }
 
 
 export interface FindLogroInterface {
     codAsignatura: string;
-    codGrado:      string;
-    periodo:       string;
-    usuario:       string;
+    codGrado: string;
+    periodo: string;
+    usuario: string;
 }
 

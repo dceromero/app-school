@@ -19,4 +19,16 @@ export class LogroService {
   createLogro(logro: any): Observable<LogroInterface> {
     return this.http.post<LogroInterface>(`${environment.apiUrl}/logros/save-logros`, logro);
   }
+
+  updateLogro(logro: any): Observable<LogroInterface> {
+    return this.http.put<LogroInterface>(`${environment.apiUrl}/logros/update-logros`, logro);
+  }
+
+  deleteLogro(codLogro: string, findLogro: FindLogroInterface): Observable<LogroInterface> {
+    return this.http.delete<LogroInterface>(`${environment.apiUrl}/logros/delete-logros`,
+      {
+        params: { codLogro },
+        body: findLogro
+      });
+  }
 }

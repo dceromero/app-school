@@ -1,29 +1,34 @@
-<p-fieldset legend="Fecha de Vencimiento de Logros y Notas">   
-<p-table
-    [value]="this.vencimientoResources.value()!"
-    [paginator]="true"
-    [rows]="5"    
-    [rowsPerPageOptions]="[5, 10, 20]"
-    showGridlines
-    stripedRows 
-    size="small"
-    class="text-center"
-    >
-        <ng-template #header >
+<p-fieldset legend="Fecha de Vencimiento de Logros">
+    <p-table [value]="this.vencimientoResources.value()!" [paginator]="true" [rows]="5"
+        [rowsPerPageOptions]="[5, 10, 20]" showGridlines stripedRows size="small" class="text-center">
+        <ng-template #header>
             <tr>
-                <th pSortableColumn="grado">Grado <p-sortIcon field="grado" /></th>
-                <th pSortableColumn="grupo">Grupo <p-sortIcon field="grupo" /></th>
-                <th pSortableColumn="asignatura">Asignatura <p-sortIcon field="asignatura" /></th>
+                <th pSortableColumn="grado">Grado <p-sortIcon field="grado" />
+                    <p-columnFilter type="text" field="grado" display="menu" />
+                </th>
+                <th pSortableColumn="asignatura">Asignatura <p-sortIcon field="asignatura" />
+                    <p-columnFilter type="text" field="asignatura" display="menu" />
+                </th>
                 <th pSortableColumn="fechaVencimiento">Fecha Vencimiento <p-sortIcon field="fechaVencimiento" /></th>
+                <th pSortableColumn="periodo">Periodo <p-sortIcon field="periodo" />
+                    <p-columnFilter type="text" field="periodo" display="menu" />
+                </th>
+                <th pSortableColumn="cantLogros">Cant Logros <p-sortIcon field="cantLogros" /></th>
+                <th pSortableColumn="cantNotasIng">Logros Ing<p-sortIcon field="cantNotasIng" />
+
+                    <p-columnFilter type="text" field="cantNotasIng" display="menu" />
+                </th>
             </tr>
         </ng-template>
         <ng-template #body let-vencimiento>
-            <tr>
+            <tr [style]="getSeverity(vencimiento)">
                 <td>{{ vencimiento.grado }}</td>
-                <td>{{ vencimiento.grupo }}</td>
                 <td>{{ vencimiento.asignatura }}</td>
-                <td>{{ vencimiento.fechaVencimiento  }}</td>
+                <td>{{ vencimiento.fechaVencimiento }}</td>
+                <td>{{ vencimiento.periodo }}</td>
+                <td>{{ vencimiento.cantLogros }}</td>
+                <td>{{ vencimiento.cantNotasIng }}</td>
             </tr>
         </ng-template>
-</p-table>
+    </p-table>
 </p-fieldset>

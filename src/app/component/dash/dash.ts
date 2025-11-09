@@ -3,6 +3,7 @@ import { PrimengModule } from '../../primeng/primeng-module';
 import { VencimientosService } from '../../services/vencimiento/vencimientos-service';
 import { rxResource } from '@angular/core/rxjs-interop';
 import { AuthService } from '../../services/auth/auth-service';
+import { VencimientoInterface } from '../../interfaces/vencimiento/vencimiento-interface';
 
 @Component({
   selector: 'app-dash',
@@ -20,5 +21,12 @@ export default class Dash {
   vencimientoResources = rxResource({
     stream: () => this.vencimientosService.getVencimientos(this.authService.user()!.userName),
   });
-
+  getSeverity(vencimiento: VencimientoInterface): string {
+    
+    if (vencimiento.cantLogros == vencimiento.cantNotasIng) {
+      return 'background-color: green; font-weight: 500;';
+    } else {
+      return 'background-color: red; font-weight: 500;';
+    }
+  }
 }

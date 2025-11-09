@@ -38,23 +38,34 @@ export class FormLogros {
       ...this.dataFindLogros(),
       codLogro: this.convertToNumber(this.formLogros.get('codLogro')?.value),
       cantNotas: this.convertToNumber(this.formLogros.get('cantNotas')?.value),
-      nota1: this.convertToNumber(this.formLogros.get('nota1')?.value),
-      nota2: this.convertToNumber(this.formLogros.get('nota2')?.value),
-      nota3: this.convertToNumber(this.formLogros.get('nota3')?.value),
-      nota4: this.convertToNumber(this.formLogros.get('nota4')?.value),
+      pc1: this.convertToNumber(this.formLogros.get('nota1')?.value),
+      pc2: this.convertToNumber(this.formLogros.get('nota2')?.value),
+      pc3: this.convertToNumber(this.formLogros.get('nota3')?.value),
+      pc4: this.convertToNumber(this.formLogros.get('nota4')?.value),
       descLogro: this.formLogros.get('descLogro')?.value
+    };
+    if (sendData.codLogro && sendData.codLogro > 0) {
+      this.logroService.updateLogro(sendData).subscribe({
+        next: (resp) => {
+          console.log('Logro actualizado', resp);
+          this.resetForm();
+        },
+        error: (err) => {
+          console.log(err);
+        }
+      });
+    } else {
+      this.logroService.createLogro(sendData).subscribe({
+        next: (resp) => {
+          console.log('Logro creado', resp);
+          this.resetForm();
+          this.closeFormBoolean.emit('');
+        },
+        error: (err) => {
+          console.log(err);
+        }
+      });
     }
-    console.log(sendData);
-    this.logroService.createLogro(sendData).subscribe({
-      next: (resp) => {
-        console.log('Logro creado', resp);
-        this.resetForm();
-        this.closeFormBoolean.emit('');
-      },
-      error: (err) => {
-        console.log(err);
-      }
-    });
   }
 
   closeForm() {

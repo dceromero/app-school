@@ -14,7 +14,7 @@ export class MenuMapper {
         return subMenuData.map((subItem) => ({
             label: subItem.Descripcion,
             icon: subItem.Icon,
-            url: subItem.Url,
+            routerLink: subItem.Url,
         }));
     }
 }
