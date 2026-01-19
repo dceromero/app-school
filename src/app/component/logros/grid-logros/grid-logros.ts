@@ -10,19 +10,29 @@ import { LogroService } from '../../../services/logro/logro-service';
   styleUrl: './grid-logros.css'
 })
 export class GridLogros {
-  outDialog = output<string>();
-  inLogros = input<LogroInterface[]>();
+  outDialog = output<LogroInterface | null>();
+  outDeleteLogro = output<LogroInterface[]>();  
+  outDialogEvaluaciones = output<LogroInterface | null>();
+  inLogros = input.required<LogroInterface[]>();
   inFindLogros = input.required<FindLogroInterface | null>();
   private logroService = inject(LogroService);
  
-  viewDialog(codLogro: string) {
-    this.outDialog.emit(codLogro);
+  viewDialog(logro: LogroInterface | null = null) {
+    if (logro === null) {
+      logro = this.logroDefault();
+    }
+    this.outDialog.emit(logro);
+  }
+
+  viewDialogEvaluaciones(logro: LogroInterface) {
+    this.outDialogEvaluaciones.emit(logro);
   }
 
   getCantLogros(): number {   
     if (this.inLogros()===null || this.inLogros()===undefined) {
       return 1;
     }
+    
     return this.inLogros()?.at(0)?.cantLogros??1;
   }
 
@@ -32,12 +42,25 @@ export class GridLogros {
       return;
     }
     this.logroService.deleteLogro(codLogro, this.inFindLogros()!).subscribe({
-      next: (resp) => {
-        console.log('Logro eliminado', resp);
+      next: (resp: LogroInterface[]) => {
+        this.outDeleteLogro.emit(resp);
       },
       error: (err) => {
         console.log(err);
       }
     });
+  }
+
+  private logroDefault(): LogroInterface {
+    return {
+      codLogro: '0',
+      textoLg: '',
+      cantNotas: 1,
+      pc1: 0,
+      pc2: 0, 
+      pc3: 0,
+      pc4: 0,
+      cantLogros: 1
+    };
   }
 }

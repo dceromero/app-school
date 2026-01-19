@@ -1,6 +1,6 @@
 import { Component, inject, input, OnInit, output, signal } from '@angular/core';
 import { PrimengModule } from '../../../primeng/primeng-module';
-import { FindLogroInterface } from '../../../interfaces/logros/logro-interface';
+import { FindLogroInterface, LogroInterface } from '../../../interfaces/logros/logro-interface';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { LogroService } from '../../../services/logro/logro-service';
 
@@ -11,8 +11,9 @@ import { LogroService } from '../../../services/logro/logro-service';
   styleUrl: './form-logros.css'
 })
 export class FormLogros {
-  closeFormBoolean = output<string>();
-  openForm = input.required<string>();
+  closeFormBoolean = output<LogroInterface | null>();
+  outSaveLogros = output<LogroInterface[]>();
+  openForm = input.required<LogroInterface | null>();
   dataFindLogros = input.required<FindLogroInterface | null>();
 
   private fb = inject(FormBuilder)
@@ -46,8 +47,8 @@ export class FormLogros {
     };
     if (sendData.codLogro && sendData.codLogro > 0) {
       this.logroService.updateLogro(sendData).subscribe({
-        next: (resp) => {
-          console.log('Logro actualizado', resp);
+        next: (resp: LogroInterface[]) => {
+          this.outSaveLogros.emit(resp);
           this.resetForm();
         },
         error: (err) => {
@@ -57,9 +58,8 @@ export class FormLogros {
     } else {
       this.logroService.createLogro(sendData).subscribe({
         next: (resp) => {
-          console.log('Logro creado', resp);
+          this.outSaveLogros.emit(resp);
           this.resetForm();
-          this.closeFormBoolean.emit('');
         },
         error: (err) => {
           console.log(err);
@@ -70,7 +70,6 @@ export class FormLogros {
 
   closeForm() {
     this.resetForm();
-    this.closeFormBoolean.emit('');
   }
 
   convertToNumber(value: string | null | undefined): number {
@@ -89,6 +88,7 @@ export class FormLogros {
       nota3: '0',
       nota4: '0',
       descLogro: ''
-    });
+    });    
+    this.closeFormBoolean.emit(null);
   }
 }

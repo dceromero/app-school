@@ -19,6 +19,10 @@ export const routes: Routes = [
       {
         path: 'logros',
         loadComponent: () => import('./page/logros/logros')
+      },
+      {
+        path: 'notas',
+        loadComponent: () => import('./page/notas/notas')
       }
     ]
   },

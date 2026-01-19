@@ -1,0 +1,99 @@
+<p-dialog header="Notas" [visible]="inLogro()!=null" [modal]="true" position="top" [maximizable]="true">
+    <p-fieldset legend="Logro">
+        <div>
+            <p-table size="small" [value]="[inLogro()]" [paginator]="false" [rows]="5"
+                [tableStyle]="{ 'min-width': '80rem' }" showGridlines stripedRows [rowsPerPageOptions]="[5, 10, 20]">
+                <ng-template #header>
+                    <tr>
+                        <th style="width:72%">Descripción</th>
+                        <th style="width:7%">% NT1</th>
+                        <th style="width:7%">% NT2</th>
+                        <th style="width:7%">% NT3</th>
+                        <th style="width:7%">% NT4</th>
+                    </tr>
+                </ng-template>
+                <ng-template #body let-logro>
+                    <tr>
+                        <td style="font-size: 15px;">{{ logro.textoLg }}</td>
+                        <td style="font-size: 15px;">{{ logro.pc1 }} %</td>
+                        <td style="font-size: 15px;">{{ logro.pc2 }} %</td>
+                        <td style="font-size: 15px;">{{ logro.pc3 }} %</td>
+                        <td style="font-size: 15px;">{{ logro.pc4 }} %</td>
+                    </tr>
+                </ng-template>
+            </p-table>
+        </div>
+        <hr class="mt-3">
+        <div class="mt-3">
+            <p-table size="small" [value]="inGetStudients()" [paginator]="true" [rows]="10"
+                [tableStyle]="{ 'min-width': '80rem' }" showGridlines stripedRows [rowsPerPageOptions]="[5, 10, 20]">
+                <ng-template #header>
+                    <tr>
+                        <th style="width:40%">Estudiante</th>
+                        <th style="width:15%">NT1</th>
+                        <th style="width:15%">NT2</th>
+                        <th style="width:15%">NT3</th>
+                        <th style="width:15%">NT4</th>
+                    </tr>
+                </ng-template>
+                <ng-template #body let-studient>
+                    <tr>
+                        <td style="font-size: 15px;">{{ studient.apellidos }} {{ studient.nombres }}</td>
+
+                        <td [pEditableColumn]="studient.n1" pEditableColumnField="n1">
+                            <p-cellEditor>
+                                <ng-template #input>
+                                    <p-inputnumber size="small" (onBlur)="save(studient)" [(ngModel)]="studient.n1" fluid />
+                                </ng-template>
+                                <ng-template #output>
+                                    {{ studient.n1 }}
+                                </ng-template>
+                            </p-cellEditor>
+                        </td>
+
+                        
+                        <td [pEditableColumn]="studient.n2" pEditableColumnField="n2">
+                            <p-cellEditor>
+                                <ng-template #input>
+                                    <p-inputnumber size="small" [(ngModel)]="studient.n2" fluid />
+                                </ng-template>
+                                <ng-template #output>
+                                    {{ studient.n2 }}
+                                </ng-template>
+                            </p-cellEditor>
+                        </td>
+
+                        
+                        <td [pEditableColumn]="studient.n3" pEditableColumnField="n3">
+                            <p-cellEditor>
+                                <ng-template #input>
+                                    <p-inputnumber (onblur)="save(studient)" size="small" [(ngModel)]="studient.n3" fluid />
+                                </ng-template>
+                                <ng-template #output>
+                                    {{ studient.n3 }}
+                                </ng-template>
+                            </p-cellEditor>
+                        </td>
+
+                        
+                        <td [pEditableColumn]="studient.n4" pEditableColumnField="n4">
+                            <p-cellEditor>
+                                <ng-template #input>
+                                    <p-inputnumber size="small" [(ngModel)]="studient.n4" fluid />
+                                </ng-template>
+                                <ng-template #output>
+                                    {{ studient.n4 }}
+                                </ng-template>
+                            </p-cellEditor>
+                        </td>
+                    </tr>
+                </ng-template>
+            </p-table>
+        </div>
+        <hr class="mt-3">
+        <div class="mt-3" style="text-align: center;">
+            <button pButton type="button" label="Cerrar" icon="pi pi-times" class="p-button-secondary"
+                (click)="closeDialog()"></button>
+        </div>
+    </p-fieldset>
+</p-dialog>

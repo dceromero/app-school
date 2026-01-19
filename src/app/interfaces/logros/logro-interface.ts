@@ -9,6 +9,18 @@ export interface LogroInterface {
     cantLogros: number;
 }
 
+export interface LogroNTInterface {
+    idPlanilla: number;
+    codLogro: string;
+    textoLg: string;
+    cantNotas: number;
+    pc1: number;
+    pc2: number;
+    pc3: number;
+    pc4: number;
+    cantLogros: number;
+}
+
 
 export interface FindLogroInterface {
     codAsignatura: string;
@@ -17,3 +29,10 @@ export interface FindLogroInterface {
     usuario: string;
 }
 
+
+export interface FindLogroCalInterface {
+    codAsignatura: string;
+    codGrado: string;
+    grupo: string;
+    periodo: string;
+}

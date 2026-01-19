@@ -23,7 +23,7 @@ export default class Dash {
   });
   getSeverity(vencimiento: VencimientoInterface): string {
     
-    if (vencimiento.cantLogros == vencimiento.cantNotasIng) {
+    if (vencimiento.cantNotasIng==0) {
       return 'background-color: green; font-weight: 500;';
     } else {
       return 'background-color: red; font-weight: 500;';

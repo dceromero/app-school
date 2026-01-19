@@ -1,0 +1,4 @@
+<app-find-logros-cal (listLogros)="getLogros($event)" (outFindLogros)="sendFindLogros($event)"></app-find-logros-cal>
+<div class="mt-3"></div>
+<app-grid-logros-cal [inLogros]="logros" (outLogro)="getStudient($event)"></app-grid-logros-cal>
+<app-dialog-studients [inLogro]="logrosCal" [inGetStudients]="studients" (closeFormBoolean)="getStudient()"></app-dialog-studients>

@@ -1,5 +1,5 @@
 <div class="border-line w-80">
-    <div class="flex items-center gap-2" routerLink="/dashboard">
+    <a class="flex items-center gap-2" href="/dashboard">
         <p-avatar [label]=" this.authService.user()!.fullname.charAt(0) " shape="circle" size="large" />
         <span class="inline-flex flex-col">
             <span class="font-bold">{{ this.authService.user()!.fullname }}</span>
@@ -7,7 +7,7 @@
         </span>
         <hr>
         
-    </div>
+    </a>
 
 </div>
 <p-panelmenu [model]=" this.menuResources.value()" class="w-full md:w-80" />
