@@ -1,7 +1,7 @@
 import { Component, inject, output } from '@angular/core';
 import { PrimengModule } from '../../../primeng/primeng-module';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
-import { FindLogroCalInterface,  FindLogroInterface, LogroInterface, LogroNTInterface } from '../../../interfaces/logros/logro-interface';
+import { FindLogroCalInterface, FindLogroInterface, LogroInterface, LogroNTInterface } from '../../../interfaces/logros/logro-interface';
 import { AuthService } from '../../../services/auth/auth-service';
 import { VencimientosService } from '../../../services/vencimiento/vencimientos-service';
 import { rxResource } from '@angular/core/rxjs-interop';
@@ -10,19 +10,19 @@ import { AsignaturaInterface } from '../../../interfaces/logros/periodo-interfac
 
 @Component({
   selector: 'app-find-logros-cal',
- imports: [PrimengModule, ReactiveFormsModule],
+  imports: [PrimengModule, ReactiveFormsModule],
   templateUrl: './find-logros-cal.html',
   styleUrl: './find-logros-cal.css'
 })
 export class FindLogrosCal {
   private findLogro: FindLogroCalInterface | undefined = undefined;
-  
+
   authService = inject(AuthService);
   vencimientosService = inject(VencimientosService);
   logroService = inject(LogroService);
   private fb = inject(FormBuilder);
 
-  
+
   listAsignaturas: AsignaturaInterface[] = [];
   listLogros = output<LogroNTInterface[]>();
   outFindLogros = output<FindLogroInterface>();
@@ -34,11 +34,11 @@ export class FindLogrosCal {
     periodo: ['', Validators.required],
   });
 
-   gradosResources = rxResource({
+  gradosResources = rxResource({
     stream: () => this.vencimientosService.getGrados(this.authService.user()!.userName),
   });
 
-  
+
   periodos = [
     { idPeriodo: 1, periodo: 'Periodo - I' },
     { idPeriodo: 2, periodo: 'Periodo - II' },
@@ -82,12 +82,27 @@ export class FindLogrosCal {
     };
     this.logroService.getLogrosCal(this.findLogro).subscribe({
       next: (logros) => {
-        console.log('logros', logros);
-        this.logroService.getLogrosCalByCodPlanilla(logros, this.authService.user()!.userName).subscribe({
-          next: (logrosCal) => {
-            this.listLogros.emit(logrosCal);
-          }
-        });
+        if (logros.includes("Falta")) {
+          this.listLogros.emit([
+            {
+              "idPlanilla": -1,
+              "codLogro": "0",
+              "textoLg": logros,
+              "cantNotas": 0,
+              "pc1": 0.00,
+              "pc2": 0.00,
+              "pc3": 0.00,
+              "pc4": 0.00,
+              "cantLogros": 0
+            }
+          ]);
+        } else {
+          this.logroService.getLogrosCalByCodPlanilla(logros, this.authService.user()!.userName).subscribe({
+            next: (logrosCal) => {
+              this.listLogros.emit(logrosCal);
+            }
+          });
+        }
       }
     });
   }

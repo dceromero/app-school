@@ -4,10 +4,11 @@ import { LogroNTInterface } from '../../../interfaces/logros/logro-interface';
 import { NotaStudientInterface } from '../../../interfaces/notas/nota-interface';
 import { FormsModule } from '@angular/forms';
 import { NotasService } from '../../../services/notas/notas-service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-dialog-studients',
-  imports: [PrimengModule, FormsModule],
+  imports: [PrimengModule, FormsModule, CommonModule],
   templateUrl: './dialog-studients.html',
   styleUrl: './dialog-studients.css'
 })

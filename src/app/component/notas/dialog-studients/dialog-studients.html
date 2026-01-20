@@ -43,7 +43,7 @@
                         <td [pEditableColumn]="studient.n1" pEditableColumnField="n1">
                             <p-cellEditor>
                                 <ng-template #input>
-                                    <p-inputnumber size="small" (onBlur)="save(studient)" [(ngModel)]="studient.n1" fluid />
+                                    <p-inputnumber [showButtons]="true" [min]="0" [max]="100"  size="small" (onBlur)="save(studient)" [(ngModel)]="studient.n1" fluid />
                                 </ng-template>
                                 <ng-template #output>
                                     {{ studient.n1 }}
@@ -54,8 +54,8 @@
                         
                         <td [pEditableColumn]="studient.n2" pEditableColumnField="n2">
                             <p-cellEditor>
-                                <ng-template #input>
-                                    <p-inputnumber size="small" [(ngModel)]="studient.n2" fluid />
+                                <ng-template  #input >
+                                    <p-inputnumber [disabled]="inLogro()!.cantNotas < 2 " [showButtons]="true" [min]="0" [max]="100"  size="small" [(ngModel)]="studient.n2" fluid />
                                 </ng-template>
                                 <ng-template #output>
                                     {{ studient.n2 }}
@@ -67,7 +67,7 @@
                         <td [pEditableColumn]="studient.n3" pEditableColumnField="n3">
                             <p-cellEditor>
                                 <ng-template #input>
-                                    <p-inputnumber (onblur)="save(studient)" size="small" [(ngModel)]="studient.n3" fluid />
+                                    <p-inputnumber [disabled]="inLogro()!.cantNotas < 3 " [showButtons]="true" [min]="0" [max]="100"  (onblur)="save(studient)" size="small" [(ngModel)]="studient.n3" fluid />
                                 </ng-template>
                                 <ng-template #output>
                                     {{ studient.n3 }}
@@ -79,7 +79,7 @@
                         <td [pEditableColumn]="studient.n4" pEditableColumnField="n4">
                             <p-cellEditor>
                                 <ng-template #input>
-                                    <p-inputnumber size="small" [(ngModel)]="studient.n4" fluid />
+                                    <p-inputnumber [disabled]="inLogro()!.cantNotas < 4 " [showButtons]="true" [min]="0" [max]="100"  size="small" [(ngModel)]="studient.n4" fluid />
                                 </ng-template>
                                 <ng-template #output>
                                     {{ studient.n4 }}
