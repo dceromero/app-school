@@ -1,0 +1,135 @@
+@if (inputStudient()) {
+<p-fieldset legend="Observaciones del Estudiante {{ inputStudient().estudiante }}">
+
+    <div class="card">
+        <p-tabs value="0">
+            <p-tablist>
+                <p-tab value="0">Formulario</p-tab>
+                <p-tab value="1"><span class="font-bold whitespace-nowrap" (click)="listObservaciones()">Listado de
+                        Observaciones</span> </p-tab>
+            </p-tablist>
+            <p-tabpanels>
+                <p-tabpanel value="0">
+                    <div class="m-3">
+                        <p-fieldset legend="Formulario de Observaciones">
+                            <form [formGroup]="formObsStudient">
+                                <div class="grid grid-cols-2 gap-2">
+                                    <div>
+                                        <p-floatlabel variant="on">
+                                            <p-select formControlName="tipoObs" size="small"
+                                                [options]="this.listTipoNota" optionValue="codTipoNota"
+                                                optionLabel="tipoNota" [filter]="true" filterBy="tipoNota"
+                                                [showClear]="true" fluid>
+                                                <ng-template #selectedItem let-selectedOption>
+                                                    <div class="flex items-center gap-2">
+                                                        <div>{{ selectedOption.tipoNota }}</div>
+                                                    </div>
+                                                </ng-template>
+                                                <ng-template let-tipoNota #item>
+                                                    <div class="flex items-center gap-2">
+                                                        <div> {{ tipoNota.tipoNota }}</div>
+                                                    </div>
+                                                </ng-template>
+                                            </p-select>
+
+                                            <label for="txtTipoNota">Tipo Nota</label>
+                                        </p-floatlabel>
+                                    </div>
+
+                                    <div>
+                                        <p-floatlabel variant="on">
+                                            <p-select formControlName="estado" size="small" [options]="this.listEstado"
+                                                optionValue="codEstado" optionLabel="estado" [filter]="true"
+                                                filterBy="estado" [showClear]="true" fluid>
+                                                <ng-template #selectedItem let-selectedOption>
+                                                    <div class="flex items-center gap-2">
+                                                        <div>{{ selectedOption.estado }}</div>
+                                                    </div>
+                                                </ng-template>
+                                                <ng-template let-estado #item>
+                                                    <div class="flex items-center gap-2">
+                                                        <div> {{ estado.estado }}</div>
+                                                    </div>
+                                                </ng-template>
+                                            </p-select>
+
+                                            <label for="txtEstado">Estado</label>
+                                        </p-floatlabel>
+                                    </div>
+
+                                    <div>
+                                        <p-floatlabel variant="on">
+                                            <textarea pTextarea id="on_label" rows="5" cols="30" style="resize: none"
+                                                formControlName="obs"
+                                                class="h-full"></textarea>
+                                            <label for="on_label">Observacion</label>
+                                        </p-floatlabel>
+                                    </div>
+
+                                    <div>
+                                        <p-floatlabel variant="on">
+                                            <textarea pTextarea id="on_label" rows="5" cols="30" style="resize: none"
+                                                formControlName="comentario"
+                                                class="h-full"></textarea>
+                                            <label for="on_label">Comentario</label>
+                                        </p-floatlabel>
+                                    </div>
+
+                                    <div>
+                                        <label for="on_label">Cumplimiento: </label>
+                                        <p-toggleswitch  formControlName="cumplido"/>
+                                    </div>
+
+                                    <div>
+                                        <p-floatlabel variant="on">
+                                            <p-inputnumber 
+                                                formControlName="numSemana" [ngModel]="this.inputStudient().numSemana" [disabled]="true" [min]="0" [max]="100" size="small"
+                                                fluid />
+                                            <label for="on_label">Semana</label>
+                                        </p-floatlabel>
+                                    </div>
+
+                                    <div class="col-span-2 flex justify-end gap-2">
+                                        <button pButton type="button" label="Guardar" icon="pi pi-save" (click)="saveObservador()" class="p-button-sm"></button>
+                                    </div>
+                                </div>
+                            </form>
+                        </p-fieldset>
+                        <hr class="mt-3">
+                    </div>
+
+                </p-tabpanel>
+                <p-tabpanel value="1">
+                    <p-table [value]="inputStudient().observaciones" [paginator]="true" [rows]="10"
+                        [showCurrentPageReport]="true" [tableStyle]="{ 'min-width': '50rem' }" showGridlines stripedRows
+                        [rowsPerPageOptions]="[5, 10, 20]">
+                        <ng-template #header>
+                            <tr>
+                                <th>Estado</th>
+                                <th>Tp Observacion</th>
+                                <th>Observación</th>
+                                <th>Comentario</th>
+                                <th>Cumplimiento</th>
+                                <th>eliminar</th>
+                            </tr>
+                        </ng-template>
+                        <ng-template #body let-obs>
+                            <tr>
+                                <td style="font-size: 15px;">{{ obs.estado }}</td>
+                                <td style="font-size: 15px;">{{ obs.tipoObs }}</td>
+                                <td style="font-size: 15px;">{{ obs.observacion }}</td>
+                                <td style="font-size: 15px;">{{ obs.comentarioAd }}</td>
+                                <td style="font-size: 15px;">
+                                     <p-checkbox [(ngModel)]="obs.cumplido" [binary]="true" variant="filled" readonly="true" /></td>
+                                <td style="font-size: 15px;"><button pButton type="button" icon="pi pi-trash"
+                                        (click)="deleteObs(obs.idRegOb)" class="p-button-text p-button-danger"></button>
+                                </td>
+                            </tr>
+                        </ng-template>
+                    </p-table>
+                </p-tabpanel>
+            </p-tabpanels>
+        </p-tabs>
+    </div>
+</p-fieldset>
+}

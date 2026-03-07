@@ -39,4 +39,9 @@ export class Auth {
       });
     }
   }
+
+  toggleDarkMode(){
+    const element = document.querySelector('html') as HTMLElement;
+    element.classList.toggle('my-app-dark')
+  }
 }

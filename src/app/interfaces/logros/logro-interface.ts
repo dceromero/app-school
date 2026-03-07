@@ -36,3 +36,27 @@ export interface FindLogroCalInterface {
     grupo: string;
     periodo: string;
 }
+
+export interface OtherNotesInterface {
+    idPlanilla:  number;
+    idMatricula: number;
+    apellidos:   string;
+    nombres:     string;
+    ausencias:   number;
+    nIcfes:      number;
+    notaRp:      number;
+    notaRF:      number;
+    notaNiv:     number;
+    notaEU:      number;
+}
+
+export interface NotaOtherSaveInterface {
+    idPlanilla:  number;
+    idMatricula: number;
+    apellidos:   string;
+    nIcfes:      number;
+    notaRp:      number;
+    notaRF:      number;
+    notaNiv:     number;
+    notaEU:      number;
+}

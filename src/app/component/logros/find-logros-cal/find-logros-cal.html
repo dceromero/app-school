@@ -1,6 +1,6 @@
 <form [formGroup]="formFindLogros">
   <p-fieldset legend="Buscar Logros para Calificar">
-    <div class="grid grid-cols-5">
+    <div class="grid grid-cols-4 m-2 gap-1" >
       <div>
         <p-floatlabel variant="on">
           <p-select formControlName="grado" size="small" [options]="gradosResources.value()" optionValue="codGrado" optionLabel="descGrado"
@@ -78,12 +78,25 @@
         </p-floatlabel>
       </div>
       
+      
+    </div>
+     <div class="grid grid-cols-2 m-2 gap-1">
+      
       <div>
         <button pButton class="w-full" (click)="findLogros()" [disabled]="formFindLogros.invalid">
           <i class="pi pi-search" pButtonIcon></i>
-          <span pButtonLabel>Buscar</span>
+          <span pButtonLabel>Buscar Logros</span>
         </button>
       </div>
-    </div>
+
+      <div>
+        <button pButton class="w-full" (click)="findOtherNotes()" [disabled]="formFindLogros.invalid">
+          <i class="pi pi-search" pButtonIcon></i>
+          <span pButtonLabel>Buscar Ausencias y Otras notas</span>
+        </button>
+      </div>
+
+
+     </div>
   </p-fieldset>
 </form>

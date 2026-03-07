@@ -19,4 +19,8 @@ export class Menu {
         stream: () => this.menuService.getMenuOptions(this.authService.user()!.userGroup),
     })
 
+    toggleDarkMode() {
+        const element = document.querySelector('html') as HTMLElement;
+        element.classList.toggle('my-app-dark')
+    }
 }

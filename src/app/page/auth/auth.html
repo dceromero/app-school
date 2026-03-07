@@ -19,7 +19,7 @@
     </ng-template>
     <ng-template #footer>
       <div class="text-center">
-        <p-button label="Ingresar" severity="info" class="text-center" (click)="loadLogin()" />
+        <p-button label="Ingresar" variant="outlined" severity="primary" class="text-center" (click)="loadLogin()" />
       </div>
     </ng-template>
   </p-card>
@@ -30,3 +30,13 @@
     </div>
   </p-dialog>
 </form>
+ <!--div class="card flex flex-wrap gap-4 justify-center">
+            <p-button label="Primary"  (onClick)="toggleDarkMode()"/>
+            <p-button label="Secondary"  variant="text"  severity="secondary" />
+            <p-button label="Success"  variant="outlined"  severity="success" />
+            <p-button label="Info"  variant="text"  severity="info" />
+            <p-button label="Warn"  variant="text"  severity="warn" />
+            <p-button label="Help"  variant="text"  severity="help" />
+            <p-button label="Danger"  variant="text"  severity="danger" />
+            <p-button label="Contrast" variant="text" severity="contrast" />
+        </div-->

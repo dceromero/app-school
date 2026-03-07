@@ -1,7 +1,7 @@
 import { Component, inject, output } from '@angular/core';
 import { PrimengModule } from '../../../primeng/primeng-module';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
-import { FindLogroCalInterface, FindLogroInterface, LogroInterface, LogroNTInterface } from '../../../interfaces/logros/logro-interface';
+import { FindLogroCalInterface, FindLogroInterface, LogroInterface, LogroNTInterface, OtherNotesInterface } from '../../../interfaces/logros/logro-interface';
 import { AuthService } from '../../../services/auth/auth-service';
 import { VencimientosService } from '../../../services/vencimiento/vencimientos-service';
 import { rxResource } from '@angular/core/rxjs-interop';
@@ -26,6 +26,7 @@ export class FindLogrosCal {
   listAsignaturas: AsignaturaInterface[] = [];
   listLogros = output<LogroNTInterface[]>();
   outFindLogros = output<FindLogroInterface>();
+  outListOtherNotes = output<OtherNotesInterface[]>();
 
   formFindLogros = this.fb.group({
     grado: ['', Validators.required],
@@ -107,4 +108,29 @@ export class FindLogrosCal {
     });
   }
 
+  findOtherNotes() {
+    if (this.formFindLogros.invalid) {
+      this.formFindLogros.markAllAsTouched();
+      return;
+    }
+    this.findLogro = {
+      codAsignatura: this.formFindLogros.value.asignatura || '',
+      codGrado: this.formFindLogros.value.grado || '',
+      grupo: this.formFindLogros.value.grupo || '',
+      periodo: this.formFindLogros.value.periodo || ''
+    };
+    this.logroService.getLogrosCal(this.findLogro).subscribe({
+      next: (codPlanilla) => {
+        if (codPlanilla.includes("Falta")) {
+          console.log("No hay planilla");
+        } else {
+          this.logroService.getOtherNotes(codPlanilla, this.authService.user()!.userName).subscribe({
+            next: (otherNotes) => {
+              this.outListOtherNotes.emit(otherNotes);
+            }
+          })
+        }
+      }
+    });
+  }
 }

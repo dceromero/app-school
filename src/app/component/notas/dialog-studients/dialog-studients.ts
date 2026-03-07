@@ -22,9 +22,8 @@ export class DialogStudients {
     this.closeFormBoolean.emit(null);
   }
 
-  save(studient: NotaStudientInterface) {
-    console.log('Guardar estudiante:', studient);
-    this.notaService.updateNota(studient).subscribe( {
+  saveAll() {
+    this.notaService.updateNota(this.inGetStudients()).subscribe( {
       next: (data) => {
         console.log('Nota actualizada con éxito:', data);
       },

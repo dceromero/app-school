@@ -1,7 +1,6 @@
 import { Component, input, output } from '@angular/core';
-import { FindLogroInterface, LogroInterface, LogroNTInterface } from '../../../interfaces/logros/logro-interface';
-import { PrimengModule } from '../../../primeng/primeng-module';
-
+import {  LogroNTInterface } from '../../../interfaces/logros/logro-interface';
+import { PrimengModule } from '../../../primeng/primeng-module';                                                                                                                                                                                                                               
 @Component({
   selector: 'app-grid-logros-cal',
   imports: [PrimengModule],
@@ -12,6 +11,7 @@ export class GridLogrosCal {
 
   inLogros = input.required<LogroNTInterface[]>();
   outLogro = output<LogroNTInterface>();
+  outLogroObservaciones = output<LogroNTInterface>();
 
   getCantLogros(): number {
     if (this.inLogros() === null || this.inLogros() === undefined) {
@@ -23,5 +23,9 @@ export class GridLogrosCal {
 
   dialogGetStudient(logro:LogroNTInterface) {
     this.outLogro.emit(logro);
+  }
+
+   dialogGetStudientObservaciones(logro:LogroNTInterface) {
+    this.outLogroObservaciones.emit(logro);
   }
 }

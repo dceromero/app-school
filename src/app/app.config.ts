@@ -5,10 +5,12 @@ import { provideHttpClient, withFetch, withInterceptors } from '@angular/common/
 import { routes } from './app.routes';
 
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
-import { providePrimeNG } from 'primeng/config';
-import Material from '@primeuix/themes/material';
 import { authInterceptor } from './shared/interceptors/loggin.interceptor';
-
+import { providePrimeNG } from 'primeng/config';
+import Aura from '@primeuix/themes/aura';
+import Material from '@primeuix/themes/material';
+import Lara from '@primeuix/themes/lara';
+import MyPreset from './primeng/mypreset';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -17,7 +19,10 @@ export const appConfig: ApplicationConfig = {
     provideAnimationsAsync(),
     providePrimeNG({
       theme: {
-        preset: Material,
+        preset: MyPreset,
+        options: {
+          darkModeSelector: '.my-app-dark',
+        }
       }
     }),
     provideRouter(routes),

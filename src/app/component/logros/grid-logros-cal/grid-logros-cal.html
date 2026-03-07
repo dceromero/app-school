@@ -1,23 +1,32 @@
+@if( inLogros().length > 0 ) {
 <p-fieldset legend="Calificacion de Logros">
     <div>
-        
+
         <p-table size="small" [value]="inLogros()" [paginator]="true" [rows]="5" [tableStyle]="{ 'min-width': '50rem' }"
             showGridlines stripedRows [rowsPerPageOptions]="[5, 10, 20]">
             <ng-template #header>
                 <tr>
-                    <th style="width:80%">Descripcion</th>
-                    <th style="width:20%">Calificar</th>
+                    <th style="width:70%">Descripcion</th>
+                    <th style="width:15%">Calificar</th>
+                    <th style="width:15%">Observaciones</th>
                 </tr>
             </ng-template>
             <ng-template #body let-logro>
                 <tr>
                     <td style="font-size: 15px;">{{ logro.textoLg }}</td>
                     <td>
-                        <button pButton type="button" icon="fa-solid fa-pen-to-square" (click)="dialogGetStudient(logro)"
+                        <button pButton type="button" icon="fa-solid fa-pen-to-square"
+                            (click)="dialogGetStudient(logro)"
                             class="p-button-rounded p-button-info mr-2">Calificar</button>
+                    </td>
+                    <td>
+                        <button pButton type="button" icon="fa-solid fa-pen-to-square"
+                            (click)="dialogGetStudientObservaciones(logro)"
+                            class="p-button-rounded p-button-info mr-2">Observaciones</button>
                     </td>
                 </tr>
             </ng-template>
         </p-table>
     </div>
 </p-fieldset>
+}

@@ -5,9 +5,10 @@
             <span class="font-bold">{{ this.authService.user()!.fullname }}</span>
             <span class="text-sm">{{ this.authService.user()!.userGroup }}</span>
         </span>
-        <hr>
-        
+        <hr>        
     </a>
-
 </div>
 <p-panelmenu [model]=" this.menuResources.value()" class="w-full md:w-80" />
+<div class="text-center mt-4">
+    <p-button label="Modo claro o oscuro"  (onClick)="toggleDarkMode()"/>
+</div>
