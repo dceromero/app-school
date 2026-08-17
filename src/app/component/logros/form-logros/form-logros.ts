@@ -37,7 +37,7 @@ export class FormLogros {
     }
     let sendData = {
       ...this.dataFindLogros(),
-      codLogro: this.convertToNumber(this.formLogros.get('codLogro')?.value),
+      codLogro: this.formLogros.get('codLogro')?.value,
       cantNotas: this.convertToNumber(this.formLogros.get('cantNotas')?.value),
       pc1: this.convertToNumber(this.formLogros.get('nota1')?.value),
       pc2: this.convertToNumber(this.formLogros.get('nota2')?.value),
@@ -45,7 +45,7 @@ export class FormLogros {
       pc4: this.convertToNumber(this.formLogros.get('nota4')?.value),
       descLogro: this.formLogros.get('descLogro')?.value
     };
-    if (sendData.codLogro && sendData.codLogro > 0) {
+    if (sendData.codLogro && sendData.codLogro !== '0') {
       this.logroService.updateLogro(sendData).subscribe({
         next: (resp: LogroInterface[]) => {
           this.outSaveLogros.emit(resp);
