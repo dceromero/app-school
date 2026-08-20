@@ -17,28 +17,28 @@
                 <p-floatlabel variant="on">
                      <p-inputnumber size="small" [ngModel]="openForm()?.pc1"  id="txtnc1" mode="decimal" fluid
                      formControlName="nota1" [disabled]=" this.convertToNumber(formLogros.get('cantNotas')?.value) < 1"/>
-                    <label for="txtnc1">Nota 1</label>
+                    <label for="txtnc1">% Nota 1</label>
                 </p-floatlabel>
             </div>
             <div>
                 <p-floatlabel variant="on">
                      <p-inputnumber size="small" id="txtnc2" [ngModel]="openForm()?.pc2" mode="decimal" fluid
                      formControlName="nota2" [disabled]=" this.convertToNumber(formLogros.get('cantNotas')?.value) < 2"/>
-                    <label for="txtnc2">Nota 2</label>
+                    <label for="txtnc2">% Nota 2</label>
                 </p-floatlabel>
             </div>
             <div>
                 <p-floatlabel variant="on">
                     <p-inputnumber size="small"  id="txtnc3" [ngModel]="openForm()?.pc3" mode="decimal" fluid
                     formControlName="nota3" [disabled]=" this.convertToNumber(formLogros.get('cantNotas')?.value) < 3"/>
-                    <label for="txtnc3">Nota 3</label>
+                    <label for="txtnc3">% Nota 3</label>
                 </p-floatlabel>
             </div>
             <div>
                 <p-floatlabel variant="on">
                     <p-inputnumber size="small" id="txtnc4" [ngModel]="openForm()?.pc4" mode="decimal" fluid
                     formControlName="nota4" [disabled]=" this.convertToNumber(formLogros.get('cantNotas')?.value) < 4"/>
-                    <label for="txtnc4">Nota 4</label>
+                    <label for="txtnc4">% Nota 4</label>
                 </p-floatlabel>
             </div>
         </div>
