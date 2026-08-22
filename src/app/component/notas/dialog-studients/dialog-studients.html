@@ -38,7 +38,11 @@
                 </ng-template>
                 <ng-template #body let-studient>
                     <tr>
-                        <td style="font-size: 15px;">{{ studient.apellidos }} {{ studient.nombres }}</td>
+                        <td style="font-size: 15px;">
+                            <span [class]= "studient.piar ? 'pi pi-check' : 'pi pi-info-circle'">                               
+                            {{ studient.apellidos }} {{ studient.nombres }}
+                            </span>
+                        </td>
 
                         <td [pEditableColumn]="studient.n1" pEditableColumnField="n1">
                             <p-cellEditor>

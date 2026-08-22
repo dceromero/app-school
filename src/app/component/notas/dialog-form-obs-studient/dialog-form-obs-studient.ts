@@ -20,13 +20,13 @@ export class DialogFormObsStudient {
     tipoObs: ['', [Validators.required]],
     estado: ['',  [Validators.required]],
     obs: ['', [Validators.required]],
-    comentario: ['',  [Validators.required]],
+    comentario: [''],
     cumplido: [false],
     numSemana: [0,  [Validators.required]],
   })
 
   listTipoNota = [
-    { codTipoNota: 'Observadoria', tipoNota: 'Observadoria' },
+    { codTipoNota: 'Observador', tipoNota: 'Observador' },
     { codTipoNota: 'Seguimiento', tipoNota: 'Seguimiento' },
   ];
 

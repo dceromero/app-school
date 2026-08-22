@@ -30,61 +30,11 @@
                             </ng-template>
                         </p-cellEditor>
                     </td>
-                    <td [pEditableColumn]="otherNote.nIcfes" pEditableColumnField="nIcfes">
-                        <p-cellEditor>
-                            <ng-template #input>
-                                <p-inputnumber [min]="0" [max]="100" size="small" [(ngModel)]="otherNote.nIcfes"
-                                    fluid />
-                            </ng-template>
-                            <ng-template #output>
-                                {{ otherNote.nIcfes }}
-                            </ng-template>
-                        </p-cellEditor>
-                    </td>
-                    <td [pEditableColumn]="otherNote.notaRp" pEditableColumnField="notaRp">
-                        <p-cellEditor>
-                            <ng-template #input>
-                                <p-inputnumber [min]="0" [max]="100" size="small" [(ngModel)]="otherNote.notaRp"
-                                    fluid />
-                            </ng-template>
-                            <ng-template #output>
-                                {{ otherNote.notaRp }}
-                            </ng-template>
-                        </p-cellEditor>
-                    </td>
-                    <td [pEditableColumn]="otherNote.notaRF" pEditableColumnField="notaRF">
-                        <p-cellEditor>
-                            <ng-template #input>
-                                <p-inputnumber [showButtons]="true" [min]="0" [max]="100" size="small"
-                                    [(ngModel)]="otherNote.notaRF" fluid />
-                            </ng-template>
-                            <ng-template #output>
-                                {{ otherNote.notaRF }}
-                            </ng-template>
-                        </p-cellEditor>
-                    </td>
-                    <td [pEditableColumn]="otherNote.notaNiv" pEditableColumnField="notaNiv">
-                        <p-cellEditor>
-                            <ng-template #input>
-                                <p-inputnumber [min]="0" [max]="100" size="small" [(ngModel)]="otherNote.notaNiv"
-                                    fluid />
-                            </ng-template>
-                            <ng-template #output>
-                                {{ otherNote.notaNiv }}
-                            </ng-template>
-                        </p-cellEditor>
-                    </td>
-                    <td [pEditableColumn]="otherNote.notaEU" pEditableColumnField="notaEU">
-                        <p-cellEditor>
-                            <ng-template #input>
-                                <p-inputnumber [showButtons]="true" [min]="0" [max]="100" size="small"
-                                    (onBlur)="save(otherNote)" [(ngModel)]="otherNote.notaEU" fluid />
-                            </ng-template>
-                            <ng-template #output>
-                                {{ otherNote.notaEU }}
-                            </ng-template>
-                        </p-cellEditor>
-                    </td>
+                    <td >{{ otherNote.nIcfes }}</td>
+                    <td >{{ otherNote.notaRp }}</td>
+                    <td >{{ otherNote.notaRF }}</td>
+                    <td >{{ otherNote.notaNiv }}</td>
+                    <td >{{ otherNote.notaEU }}</td>                 
                 </tr>
             </ng-template>
         </p-table>

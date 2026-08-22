@@ -3,7 +3,7 @@ import { inject, Injectable } from '@angular/core';
 import { environment } from '../../../environments/environment';
 import { VencimientoInterface } from '../../interfaces/vencimiento/vencimiento-interface';
 import { Observable } from 'rxjs';
-import { AsignaturaInterface, GradoInterface } from '../../interfaces/logros/periodo-interface';
+import { AsignaturaInterface, GradoInterface, groupsInterface } from '../../interfaces/logros/periodo-interface';
 
 @Injectable({
   providedIn: 'root'
@@ -38,4 +38,7 @@ export class VencimientosService {
     });
   }
 
+  getGrups():Observable<groupsInterface[]> {
+    return this.http.get<groupsInterface[]>(`${environment.apiUrl}/vencimientos/get-groups`);
+  }
 }

@@ -12,3 +12,13 @@ export interface AsignaturaInterface {
     codAsignatura: string;
     asignatura: string;
 }
+
+export interface groupsInterface {
+    idGrupo: string;
+    grupo: string;
+}
+
+export interface periodoInterface {
+    idPeriodo: number;
+    periodo: string;
+}

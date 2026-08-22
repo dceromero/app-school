@@ -9,6 +9,7 @@ export interface NotaStudientInterface {
     n3:          number;
     n4:          number;
     numSemana:   number;
+    piar:        boolean;
 }
 
 export interface NotaSaveInterface {

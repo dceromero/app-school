@@ -22,7 +22,7 @@
      
        <div>
         <p-floatlabel variant="on">
-          <p-select formControlName="grupo" size="small" [options]="grupos" optionValue="idGrupo" optionLabel="grupo" [filter]="true"
+          <p-select formControlName="grupo" size="small" [options]="groupsResources.value()" optionValue="idGrupo" optionLabel="grupo" [filter]="true"
             filterBy="grupo" [showClear]="true" fluid>
             <ng-template #selectedItem let-selectedOption>
               <div class="flex items-center gap-2">
@@ -61,8 +61,13 @@
     
       <div>
         <p-floatlabel variant="on">
-          <p-select formControlName="periodo" size="small" [options]="periodos" optionValue="idPeriodo" optionLabel="periodo" [filter]="true"
-            filterBy="periodo" [showClear]="true" fluid>
+          <p-select formControlName="periodo" size="small" [options]="periodosResources.value()" 
+            optionValue="idPeriodo" 
+            optionLabel="periodo" 
+            [filter]="true"
+            filterBy="periodo" 
+             [ngModel]="intPeriodo"
+            [showClear]="true" fluid>
             <ng-template #selectedItem let-selectedOption>
               <div class="flex items-center gap-2">
                 <div>{{ selectedOption.periodo }}</div>
