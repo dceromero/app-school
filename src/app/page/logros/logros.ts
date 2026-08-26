@@ -7,7 +7,7 @@ import { Evaluaciones } from '../../component/logros/evaluaciones/evaluaciones';
 
 @Component({
   selector: 'app-logros',
-  imports: [FindLogros, GridLogros, FormLogros, Evaluaciones],
+  imports: [FindLogros, GridLogros, FormLogros],
   templateUrl: './logros.html',
   styleUrl: './logros.css'
 })
@@ -32,5 +32,9 @@ export default class Logros {
 
   sendFindLogros(event: FindLogroInterface) {
     this.findLogros = event;
+  }
+
+  getEvaluaciones(event: LogroInterface[]) {
+    this.logros = event;
   }
 }

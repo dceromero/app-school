@@ -7,6 +7,7 @@ export interface LogroInterface {
     pc3: number;
     pc4: number;
     cantLogros: number;
+    id:number;
 }
 
 export interface LogroNTInterface {
@@ -21,6 +22,26 @@ export interface LogroNTInterface {
     cantLogros: number;
 }
 
+export interface FindEvaluacionInterface {
+    id: number;
+    descLogro: string;
+    cantNotas: number;
+    evaluations: EvaluacionInterface[] | [];
+}
+
+export interface EvaluacionInterface {
+    id: number;
+    item: string;
+    idEvaluacion: string | null;
+    evaluacion: string | null;
+    detalle: string | null;
+    fecha: Date | null;
+}
+
+export interface TypeEvaluacionInterface {
+    valor: string;
+    descripcion: string;
+}
 
 export interface FindLogroInterface {
     codAsignatura: string;

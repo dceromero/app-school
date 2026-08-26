@@ -39,7 +39,7 @@
                 <ng-template #body let-studient>
                     <tr>
                         <td style="font-size: 15px;">
-                            <span [class]= "studient.piar ? 'pi pi-check' : 'pi pi-info-circle'">                               
+                            <span [class]= "studient.seguimiento ? 'pi pi-check' : 'pi pi-info-circle'">                               
                             {{ studient.apellidos }} {{ studient.nombres }}
                             </span>
                         </td>
@@ -100,7 +100,11 @@
         </div>
         <hr class="mt-3">
         <div class="mt-3" style="text-align: center;">
-            <button pButton type="button" label="Guardar" icon="pi pi-save" class="p-button-primary"
+            <button pButton 
+                    type="button" 
+                    label="Guardar" 
+                    icon="pi pi-save" 
+                    class="p-button-primary"
                 (click)="saveAll()"></button>
             <button pButton type="button" label="Cerrar" icon="pi pi-times" class="p-button-secondary"
                 (click)="closeDialog()"></button>

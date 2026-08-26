@@ -1,40 +1,107 @@
-<p-dialog header="Evalauaciones" [visible]="inEvaluaciones()!=null" [modal]="true" position="top">
-    <form [formGroup]="formEvaluaciones">
-        <div class="grid grid-cols-1 mt-1">
-            <p-floatlabel variant="on">
-                <textarea pTextarea id="txtTextoLg" [ngModel]="inEvaluaciones()?.textoLg" rows="3" cols="30" style="resize: none" fluid formControlName="descLogro"></textarea>
-                <label for="txtTextoLg">Logro</label>
-            </p-floatlabel>
-        </div>
-        <div class="grid grid-cols-4 mt-3 gap-4">
-            <div>
-                <p-floatlabel variant="on">
-                    <p-inputnumber size="small" id="txtCantNotas" [ngModel]="inEvaluaciones()?.cantNotas" fluid  formControlName="cantNotas"/>
-                    <label for="txtCantNotas">Cantidad de Notas</label>
-                </p-floatlabel>
-            </div>
-            <div>
-        <p-floatlabel variant="on">
-          <p-select | size="small"
-            [filter]="true"  [showClear]="true" fluid >
-            <ng-template #selectedItem let-selectedOption>
-              <div class="flex items-center gap-2">
-                <div>{{ selectedOption.codGrado }} - {{ selectedOption.descGrado }}</div>
+<p-dialog header="Evalauaciones" [visible]="inFindEvaluacion()!==null " [modal]="true" position="top">
+
+  <form [formGroup]="formEvaluaciones">
+    <div class="grid grid-cols-1 mt-1">
+      <p-floatlabel variant="on">
+        <textarea pTextarea id="txtTextoLg" [ngModel]="inFindEvaluacion()?.descLogro" rows="3" cols="30"
+          style="resize: none" fluid formControlName="descLogro"></textarea>
+        <label for="txtTextoLg">Logro</label>
+      </p-floatlabel>
+    </div>
+    <div class="grid grid-cols-1 mt-3 gap-4" [style]="{ width: '75rem', height: '30rem' }">
+      <div class="card">
+        <p-tabs value="{{tab}}">
+          <p-tablist>
+            <p-tab value="0" (click)="changeTab('0')">Listado</p-tab>
+            <p-tab value="1"><span class="font-bold whitespace-nowrap">Formulario</span> </p-tab>
+          </p-tablist>
+          <p-tabpanels>
+            <p-tabpanel value="0">
+              <p-table size="small" [value]="inFindEvaluacion()?.evaluations || []" [paginator]="true" [rows]="5"
+                [tableStyle]="{ 'min-width': '50rem' }" showGridlines stripedRows [rowsPerPageOptions]="[5, 10, 20]">
+                <ng-template #header>
+                  <tr>
+                    <th style="width:10%">Nota</th>
+                    <th style="width:25%">evaluacion</th>
+                    <th style="width:50%">detalle</th>
+                    <th style="width:15%">fecha</th>
+                  </tr>
+                </ng-template>
+                <ng-template #body let-evaluation let-rowIndex="rowIndex">
+                  <tr>
+                    <td style="font-size: 15px;">
+                      <button pButton type="button" icon="pi pi-pen-to-square"
+                        [disabled]="!(inFindEvaluacion()!.cantNotas >= rowIndex+1)"
+                        class="p-button-rounded p-button-primary mr-2" (click)="getEvaluation(evaluation)"> {{
+                        evaluation.item }}
+                      </button>
+                    </td>
+                    <td>{{ evaluation.evaluacion}}</td>
+                    <td>{{ evaluation.detalle}}</td>
+                    <td>{{ evaluation.fecha | date: 'yyyy-MM-dd'}}</td>
+
+                  </tr>
+                </ng-template>
+              </p-table>
+              <div class="flex justify-center mt-3 gap-4">
+                <p-button label="Cerrar" (click)="closedDialog()" severity="secondary" />
               </div>
-            </ng-template>
-            <ng-template let-grado #item>
-              <div class="flex items-center gap-2">
-                <div>{{ grado.codGrado }} - {{ grado.descGrado }}</div>
+            </p-tabpanel>
+            <p-tabpanel value="1">
+              <div class="grid grid-cols-1 ">
+                <div class="grid grid-cols-3 gap-4">
+                  <div>
+                    <p-floatlabel variant="on">
+                      <input pInputText size="small" formControlName="item" id="txtitem" fluid />
+                      <label for="txtitem">Item</label>
+                    </p-floatlabel>
+                  </div>
+                  <div>
+                    <p-floatlabel variant="on">
+                      <p-select name="cmbEvalation" size="small" [options]="helperTypeEvaluation.value()"
+                        formControlName="evaluacion" 
+                         [ngModel]="notaSelected"
+                        optionValue="valor" optionLabel="descripcion" [filter]="true"
+                        filterBy="descripcion" [showClear]="true" fluid>
+                        <ng-template #selectedItem let-selectedOption>
+                          <div class="flex items-center gap-2">
+                            <div>{{ selectedOption.descripcion }}</div>
+                          </div>
+                        </ng-template>
+                        <ng-template let-type #item>
+                          <div class="flex items-center gap-2">
+                            <div>{{ type.descripcion }}</div>
+                          </div>
+                        </ng-template>
+                      </p-select>
+                      <label for="cmbEvalation">Evaluación</label>
+                    </p-floatlabel>
+                  </div>
+                  <div>
+                    <p-floatlabel variant="on">
+                      <p-datepicker [iconDisplay]="'input'" dateFormat="yy-mm-dd" [showIcon]="true" formControlName="fecha"
+                        inputId="icondisplay" fluid />
+                      <label for="txtfecha">Fecha</label>
+                    </p-floatlabel>
+                  </div>
+                </div>
+                <div class="grid grid-cols-1 mt-3">
+                  <p-floatlabel variant="on">
+                    <textarea pTextarea id="txtdetalle" rows="3" cols="30" style="resize: none"
+                      formControlName="detalle" fluid></textarea>
+                    <label for="txtdetalle">Detalle</label>
+                  </p-floatlabel>
+                </div>
+                <div class="flex justify-center mt-3 gap-4">
+                  <p-button label="Guardar" (click)="saveEvaluation()" severity="success" />
+                  <p-button label="Cerrar" (click)="closedDialog()" severity="secondary" />
+                </div>
               </div>
-            </ng-template>
-          </p-select>
-          <label for="txtGrado">Grado</label>
-        </p-floatlabel>
+            </p-tabpanel>
+          </p-tabpanels>
+        </p-tabs>
       </div>
-        </div>
-        <div class="flex justify-center mt-3 gap-4">
-            <p-button label="Guardar" severity="success"  />
-            <p-button label="Cerrar" severity="secondary"  />
-        </div>
-    </form>
+    </div>
+
+  </form>
 </p-dialog>

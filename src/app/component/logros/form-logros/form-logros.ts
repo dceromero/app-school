@@ -88,7 +88,15 @@ export class FormLogros {
       nota3: '0',
       nota4: '0',
       descLogro: ''
-    });    
+    });
     this.closeFormBoolean.emit(null);
+  }
+
+  validateTotalPercentage(): boolean {
+    const nota1 = this.convertToNumber(this.formLogros.get('nota1')?.value);
+    const nota2 = this.convertToNumber(this.formLogros.get('nota2')?.value);
+    const nota3 = this.convertToNumber(this.formLogros.get('nota3')?.value);
+    const nota4 = this.convertToNumber(this.formLogros.get('nota4')?.value);
+    return (nota1 + nota2 + nota3 + nota4) === 100;
   }
 }

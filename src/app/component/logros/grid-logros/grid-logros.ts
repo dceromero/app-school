@@ -1,22 +1,27 @@
-import { Component, inject, input, OnInit, output } from '@angular/core';
+import { Component, inject, input, OnInit, output, signal } from '@angular/core';
 import { PrimengModule } from '../../../primeng/primeng-module';
-import { FindLogroInterface, LogroInterface } from '../../../interfaces/logros/logro-interface';
+import { EvaluacionInterface, FindEvaluacionInterface, FindLogroInterface, LogroInterface } from '../../../interfaces/logros/logro-interface';
 import { LogroService } from '../../../services/logro/logro-service';
+import { Evaluaciones } from '../evaluaciones/evaluaciones';
+import { EvaluacionService } from '../../../services/evaluacion/evaluacion-service';
+import { Contenidos } from "../contenidos/contenidos";
 
 @Component({
   selector: 'app-grid-logros',
-  imports: [PrimengModule],
+  imports: [PrimengModule, Evaluaciones, Contenidos],
   templateUrl: './grid-logros.html',
   styleUrl: './grid-logros.css'
 })
 export class GridLogros {
+
   outDialog = output<LogroInterface | null>();
-  outDeleteLogro = output<LogroInterface[]>();  
-  outDialogEvaluaciones = output<LogroInterface | null>();
+  outDeleteLogro = output<LogroInterface[]>();
   inLogros = input.required<LogroInterface[]>();
   inFindLogros = input.required<FindLogroInterface | null>();
+  findEvaluacion = signal<FindEvaluacionInterface | null>(null);
   private logroService = inject(LogroService);
- 
+  private evaluationService = inject(EvaluacionService);
+
   viewDialog(logro: LogroInterface | null = null) {
     if (logro === null) {
       logro = this.logroDefault();
@@ -25,15 +30,28 @@ export class GridLogros {
   }
 
   viewDialogEvaluaciones(logro: LogroInterface) {
-    this.outDialogEvaluaciones.emit(logro);
+
+    let findEvaluation: FindEvaluacionInterface = {
+      id: logro.id,
+      descLogro: logro.textoLg,
+      cantNotas: logro.cantNotas,
+      evaluations: []
+    };
+    this.evaluationService.getEvaluationByIdLogro(logro.id).subscribe({
+      next: (resp) => {
+        findEvaluation.evaluations = resp;
+      }
+    });
+
+    this.findEvaluacion.set(findEvaluation);
   }
 
-  getCantLogros(): number {   
-    if (this.inLogros()===null || this.inLogros()===undefined) {
+  getCantLogros(): number {
+    if (this.inLogros() === null || this.inLogros() === undefined) {
       return 1;
     }
-    
-    return this.inLogros()?.at(0)?.cantLogros??1;
+
+    return this.inLogros()?.at(0)?.cantLogros ?? 1;
   }
 
   deleteLogro(codLogro: string) {
@@ -57,10 +75,19 @@ export class GridLogros {
       textoLg: '',
       cantNotas: 1,
       pc1: 0,
-      pc2: 0, 
+      pc2: 0,
       pc3: 0,
       pc4: 0,
-      cantLogros: 1
+      cantLogros: 1,
+      id: 0
     };
   }
+
+  handleCloseEvaluacion(event: boolean) {
+    if (event) {
+      this.findEvaluacion.set(null);
+    }
+  }
+
 }
+

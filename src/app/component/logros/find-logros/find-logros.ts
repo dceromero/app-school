@@ -7,6 +7,7 @@ import { AsignaturaInterface } from '../../../interfaces/logros/periodo-interfac
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { LogroService } from '../../../services/logro/logro-service';
 import { FindLogroInterface, LogroInterface } from '../../../interfaces/logros/logro-interface';
+import { PeriodoService } from '../../../services/periodos/periodo-service';
 
 @Component({
   selector: 'app-find-logros',
@@ -19,6 +20,7 @@ export class FindLogros {
   authService = inject(AuthService);
   vencimientosService = inject(VencimientosService);
   logroService = inject(LogroService);
+  periodoService = inject(PeriodoService);
   private findLogro: FindLogroInterface | undefined = undefined;
   private fb = inject(FormBuilder);
 
@@ -38,12 +40,10 @@ export class FindLogros {
   });
 
 
-  periodos = [
-    { idPeriodo: 1, periodo: 'Periodo - I' },
-    { idPeriodo: 2, periodo: 'Periodo - II' },
-    { idPeriodo: 3, periodo: 'Periodo - III' },
-    { idPeriodo: 4, periodo: 'Periodo - IV' }
-  ];
+  periodosResources = rxResource({
+    stream: () => this.periodoService.getAllPeriodos()
+  });
+
 
   selectedGrado(grado: string) {
     this.formFindLogros.controls['asignatura'].setValue('');

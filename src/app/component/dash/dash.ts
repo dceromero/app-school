@@ -4,6 +4,7 @@ import { VencimientosService } from '../../services/vencimiento/vencimientos-ser
 import { rxResource } from '@angular/core/rxjs-interop';
 import { AuthService } from '../../services/auth/auth-service';
 import { VencimientoInterface } from '../../interfaces/vencimiento/vencimiento-interface';
+import { PeriodoService } from '../../services/periodos/periodo-service';
 
 @Component({
   selector: 'app-dash',
@@ -14,6 +15,7 @@ import { VencimientoInterface } from '../../interfaces/vencimiento/vencimiento-i
 export default class Dash {
 
   authService = inject(AuthService);
+  periodoService = inject(PeriodoService);
   vencimientosService = inject(VencimientosService);
 
 
@@ -24,9 +26,13 @@ export default class Dash {
   getSeverity(vencimiento: VencimientoInterface): string {
     
     if (vencimiento.cantNotasIng==0) {
-      return 'background-color: green; font-weight: 500;';
+      return 'background-color: #88DC65; font-weight: 500;';
     } else {
-      return 'background-color: red; font-weight: 500;';
+      return 'background-color: #A63723; font-weight: 500; color: #e9dfdf;';
     }
+  }
+
+  getNamePeriodo(idPeriodo: number): string {
+    return this.periodoService.getNamePeriodo(idPeriodo);
   }
 }

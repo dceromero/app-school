@@ -1,7 +1,8 @@
 <p-fieldset legend="Logros">
     <div>
         <div class="flex mb-3 justify-end">
-            <button pButton class="p-button-info" (click)="viewDialog()" [disabled]="inFindLogros()===null || inFindLogros()===undefined || inFindLogros()?.periodo==='' || getCantLogros() === 0">Adicionar</button>
+            <button pButton class="p-button-info" (click)="viewDialog()"
+                [disabled]="inFindLogros()===null || inFindLogros()===undefined || inFindLogros()?.periodo==='' || getCantLogros() === 0">Adicionar</button>
         </div>
         <hr>
         <p-table size="small" [value]="inLogros()" [paginator]="true" [rows]="5" [tableStyle]="{ 'min-width': '50rem' }"
@@ -23,14 +24,24 @@
                     <td>{{ logro.pc2}}</td>
                     <td>{{ logro.pc3 }}</td>
                     <td>{{ logro.pc4 }}</td>
-                    <td>                        
-                        <button pButton type="button" icon="fa-solid fa-trash"
-                            class="p-button-rounded p-button-danger mr-2" (click)="deleteLogro(logro.codLogro)"></button>
+                    <td>
+                        <button pButton type="button" icon="pi pi-trash"
+                            class="p-button-rounded p-button-danger mr-2" (click)="deleteLogro(logro.codLogro)">
+                        </button>
                         <button pButton type="button" icon="fa-solid fa-file-pen"
-                            class="p-button-rounded p-button-secondary" (click)="viewDialog(logro)"></button>
+                            class="p-button-rounded p-button-secondary mr-2" (click)="viewDialog(logro)">
+                        </button>                        
+                        <button pButton type="button" icon="pi pi-briefcase"
+                            class="p-button-rounded p-button-primary mr-2" (click)="viewDialog(logro)">
+                        </button>                        
+                        <button pButton type="button" icon="fa-solid fa-folder-plus"
+                            class="p-button-rounded p-button-info mr-2" (click)="viewDialogEvaluaciones(logro)">
+                        </button>
                     </td>
                 </tr>
             </ng-template>
         </p-table>
     </div>
 </p-fieldset>
+<app-evaluaciones [inFindEvaluacion]="findEvaluacion() "  (outCloseEvaluacion)="handleCloseEvaluacion($event)"></app-evaluaciones>
+<app-contenidos></app-contenidos>

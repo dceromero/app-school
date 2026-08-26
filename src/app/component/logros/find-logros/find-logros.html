@@ -40,7 +40,7 @@
       </div>
       <div>
         <p-floatlabel variant="on">
-          <p-select formControlName="periodo" size="small" [options]="periodos" optionValue="idPeriodo" optionLabel="periodo" [filter]="true"
+          <p-select formControlName="periodo" size="small" [options]="periodosResources.value()" optionValue="idPeriodo" optionLabel="periodo" [filter]="true"
             filterBy="periodo" [showClear]="true" fluid>
             <ng-template #selectedItem let-selectedOption>
               <div class="flex items-center gap-2">

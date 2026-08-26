@@ -84,6 +84,7 @@ export class DialogFormObsStudient {
       next: (resp) => {
         this.listObservaciones();
         this.formObsStudient.reset();
+        this.formObsStudient.get('numSemana')!.setValue(sendData.numSemana);
       },
       error: (err) => {
         console.log(err);

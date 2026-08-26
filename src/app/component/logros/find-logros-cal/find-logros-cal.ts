@@ -7,7 +7,8 @@ import { VencimientosService } from '../../../services/vencimiento/vencimientos-
 import { rxResource } from '@angular/core/rxjs-interop';
 import { LogroService } from '../../../services/logro/logro-service';
 import { AsignaturaInterface, periodoInterface } from '../../../interfaces/logros/periodo-interface';
-import { from } from 'rxjs';
+import { from, of } from 'rxjs';
+import { PeriodoService } from '../../../services/periodos/periodo-service';
 
 @Component({
   selector: 'app-find-logros-cal',
@@ -21,6 +22,7 @@ export class FindLogrosCal {
   authService = inject(AuthService);
   vencimientosService = inject(VencimientosService);
   logroService = inject(LogroService);
+  periodoService = inject(PeriodoService);
   private fb = inject(FormBuilder);
 
 
@@ -44,17 +46,10 @@ export class FindLogrosCal {
     stream: () => this.vencimientosService.getGrups(),
   });
 
-  periodos: periodoInterface[] = [
-    { idPeriodo: 1, periodo: 'Periodo - I' },
-    { idPeriodo: 2, periodo: 'Periodo - II' },
-    { idPeriodo: 3, periodo: 'Periodo - III' },
-    { idPeriodo: 4, periodo: 'Periodo - IV' }
-  ].filter((periodo) => periodo.idPeriodo === parseInt(this.authService.user()!.periodo));
-
   periodosResources = rxResource({
-    stream: () => from([this.periodos]),
+    stream: () => this.periodoService.getPeriodoActual(parseInt(this.authService.user()!.periodo))
   });
- 
+
   intPeriodo = parseInt(this.authService.user()!.periodo);
 
   selectedGrado(grado: string) {
@@ -72,7 +67,7 @@ export class FindLogrosCal {
       }
     });
   }
-  
+
   findLogros() {
     if (this.formFindLogros.invalid) {
       this.formFindLogros.markAllAsTouched();

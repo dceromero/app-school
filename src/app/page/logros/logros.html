@@ -1,5 +1,4 @@
 <app-find-logros (listLogros)="getLogros($event)" (outFindLogros)="sendFindLogros($event)"></app-find-logros>
 <div class="mt-3"></div>
-<app-grid-logros [inLogros]="logros" [inFindLogros]="findLogros" (outDeleteLogro)="getLogros($event)" (outDialogEvaluaciones)="openFormEvaluaciones($event)" (outDialog)="openFormLogros($event)"></app-grid-logros>
+<app-grid-logros [inLogros]="logros" [inFindLogros]="findLogros" (outDeleteLogro)="getLogros($event)" (outDialog)="openFormLogros($event)"></app-grid-logros>
 <app-form-logros [openForm]="viewFormLogros" [dataFindLogros]="findLogros" (closeFormBoolean)="openFormLogros()" (outSaveLogros)="getLogros($event)"></app-form-logros>
-<app-evaluaciones [inEvaluaciones]="viewEvaluaciones" ></app-evaluaciones>

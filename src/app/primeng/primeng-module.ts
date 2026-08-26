@@ -17,6 +17,7 @@ import { TextareaModule } from 'primeng/textarea';
 import { ToggleSwitchModule } from 'primeng/toggleswitch';
 import { TabsModule } from 'primeng/tabs';
 import { CheckboxModule } from 'primeng/checkbox';
+import { DatePickerModule } from 'primeng/datepicker';
 
 @NgModule({
   declarations: [],
@@ -27,6 +28,7 @@ import { CheckboxModule } from 'primeng/checkbox';
     CardModule,
     CheckboxModule,
     DialogModule,
+    DatePickerModule,
     FieldsetModule,
     FloatLabelModule,
     InputNumberModule,
