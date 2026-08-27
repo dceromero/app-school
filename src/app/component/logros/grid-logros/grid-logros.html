@@ -26,15 +26,19 @@
                     <td>{{ logro.pc4 }}</td>
                     <td>
                         <button pButton type="button" icon="pi pi-trash"
+                            pTooltip="Eliminar" tooltipPosition="top"
                             class="p-button-rounded p-button-danger mr-2" (click)="deleteLogro(logro.codLogro)">
                         </button>
                         <button pButton type="button" icon="fa-solid fa-file-pen"
+                            pTooltip="Editar" tooltipPosition="top"
                             class="p-button-rounded p-button-secondary mr-2" (click)="viewDialog(logro)">
                         </button>                        
                         <button pButton type="button" icon="pi pi-briefcase"
-                            class="p-button-rounded p-button-primary mr-2" (click)="viewDialog(logro)">
+                            pTooltip="Contenido" tooltipPosition="top"
+                            class="p-button-rounded p-button-primary mr-2" (click)="viewDialogContenidos(logro)">
                         </button>                        
                         <button pButton type="button" icon="fa-solid fa-folder-plus"
+                             pTooltip="Evaluación" tooltipPosition="top"
                             class="p-button-rounded p-button-info mr-2" (click)="viewDialogEvaluaciones(logro)">
                         </button>
                     </td>
@@ -44,4 +48,4 @@
     </div>
 </p-fieldset>
 <app-evaluaciones [inFindEvaluacion]="findEvaluacion() "  (outCloseEvaluacion)="handleCloseEvaluacion($event)"></app-evaluaciones>
-<app-contenidos></app-contenidos>
+<app-contenidos [inFindContenido]="findContenido()" (outSaveContent)="handleCloseContent($event)"></app-contenidos>

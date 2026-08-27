@@ -3,6 +3,7 @@ import { AvatarModule } from 'primeng/avatar';
 import { ButtonModule } from 'primeng/button';
 import { CardModule } from 'primeng/card';
 import { DialogModule } from 'primeng/dialog';
+import { EditorModule } from 'primeng/editor';
 import { FieldsetModule } from 'primeng/fieldset';
 import { FloatLabelModule } from 'primeng/floatlabel';
 import { InputNumberModule } from 'primeng/inputnumber';
@@ -16,6 +17,7 @@ import { TableModule } from 'primeng/table';
 import { TextareaModule } from 'primeng/textarea';
 import { ToggleSwitchModule } from 'primeng/toggleswitch';
 import { TabsModule } from 'primeng/tabs';
+import { TooltipModule } from 'primeng/tooltip';
 import { CheckboxModule } from 'primeng/checkbox';
 import { DatePickerModule } from 'primeng/datepicker';
 
@@ -29,6 +31,7 @@ import { DatePickerModule } from 'primeng/datepicker';
     CheckboxModule,
     DialogModule,
     DatePickerModule,
+    EditorModule,
     FieldsetModule,
     FloatLabelModule,
     InputNumberModule,
@@ -41,6 +44,7 @@ import { DatePickerModule } from 'primeng/datepicker';
     TabsModule ,
     TextareaModule,
     ToggleSwitchModule,
+    TooltipModule
   ]
 })
 export class PrimengModule { }

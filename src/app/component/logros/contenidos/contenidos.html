@@ -1,1 +1,86 @@
-<p>contenidos works!</p>
+<p-dialog header="Contenidos" [visible]="inFindContenido()!==null " [modal]="true" position="top">
+
+    <form [formGroup]="formContent">
+        <div class="grid grid-cols-1 mt-1">
+            <p-floatlabel variant="on">
+                <textarea pTextarea id="txtTextoLg" [ngModel]="inFindContenido()?.descLogro" rows="3" cols="30"
+                    style="resize: none" fluid formControlName="descLogro"></textarea>
+                <label for="txtTextoLg">Logro</label>
+            </p-floatlabel>
+        </div>
+        <div class="grid grid-cols-1 mt-3 gap-4" [style]="{ width: '75rem', height: '30rem' }">
+            <div class="card">
+                <p-tabs value="{{tab}}">
+                    <p-tablist>
+                        <p-tab value="0" (click)="changeTab('0')">Listado</p-tab>
+                        <p-tab value="1"><span class="font-bold whitespace-nowrap">Formulario</span> </p-tab>
+                    </p-tablist>
+                    <p-tabpanels>
+                        <p-tabpanel value="0">
+                            <p-table size="small" [value]="inFindContenido()?.contenidos ||[]" [paginator]="true" [rows]="5"
+                                [tableStyle]="{ 'min-width': '50rem' }" showGridlines stripedRows
+                                [rowsPerPageOptions]="[5, 10, 20]">
+                                <ng-template #header>
+                                    <tr>
+                                        <th style="width:10%">Tema</th>
+                                        <th style="width:20%">Comentario</th>
+                                        <th style="width:50%">Contenido</th>
+                                        <th style="width:10%">Usuario</th>
+                                        <th style="width:10%">fecha</th>
+                                    </tr>
+                                </ng-template>
+                                <ng-template #body let-contenido let-rowIndex="rowIndex">
+                                    <tr>
+                                        <td style="font-size: 15px;">
+                                            <button pButton type="button" icon="pi pi-pen-to-square"
+                                                (click)="getContent(contenido)"
+                                                class="p-button-rounded p-button-primary mr-2"> {{
+                                                contenido.item }}
+                                            </button>
+                                        </td>
+                                        <td>{{ contenido.comentario }}</td>
+                                        <td>{{ contenido.contenido }}</td>
+                                        <td>{{ contenido.usuario }}</td>
+                                        <td>{{ contenido.fecRegistro | date: 'yyyy-MM-dd' }}</td>
+                                    </tr>
+                                </ng-template>
+                            </p-table>
+                            <div class="flex justify-center mt-3 gap-4">
+                                <p-button label="Cerrar" (click)="closedDialog()" severity="secondary" />
+                            </div>
+                        </p-tabpanel>
+                        <p-tabpanel value="1">
+                            <div class="grid grid-cols-1 ">
+                                <div class="grid grid-cols-2 gap-4">
+                                    <div>
+                                        <p-floatlabel variant="on">
+                                            <input pInputText size="small" formControlName="item" id="txtitem" fluid />
+                                            <label for="txtitem">Item</label>
+                                        </p-floatlabel>
+                                    </div>
+                                    <div>
+                                        <p-floatlabel variant="on">
+                                            <input pInputText size="small" formControlName="comentario"
+                                                id="txtcomentario" fluid />
+                                            <label for="txtcomentario">Comentario</label>
+                                        </p-floatlabel>
+                                    </div>
+                                </div>
+                                <div class="grid grid-cols-1 mt-3">
+                                    <p-fieldset legend="Contenido">
+                                        <p-editor formControlName="contenido" [style]="{ height: '170px' }" />
+                                    </p-fieldset>
+                                </div>
+                                <div class="flex justify-center mt-3 gap-4">
+                                    <p-button label="Guardar" (click)="saveContent()" severity="success" />
+                                    <p-button label="Cerrar" (click)="closedDialog()" severity="secondary" />
+                                </div>
+                            </div>
+                        </p-tabpanel>
+                    </p-tabpanels>
+                </p-tabs>
+            </div>
+        </div>
+
+    </form>
+</p-dialog>

@@ -29,6 +29,21 @@ export interface FindEvaluacionInterface {
     evaluations: EvaluacionInterface[] | [];
 }
 
+export interface FindContenidoInterface {
+    id: number;
+    descLogro: string;
+    contenidos: ContenidoInterface[] | [];
+}
+
+export interface ContenidoInterface {
+    id: number;
+    item: string;
+    contenido: string | null;
+    comentario: string | null;
+    fecRegistro: Date | null;
+    usuario: string | null;
+}
+
 export interface EvaluacionInterface {
     id: number;
     item: string;

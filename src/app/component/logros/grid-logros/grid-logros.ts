@@ -1,10 +1,11 @@
 import { Component, inject, input, OnInit, output, signal } from '@angular/core';
 import { PrimengModule } from '../../../primeng/primeng-module';
-import { EvaluacionInterface, FindEvaluacionInterface, FindLogroInterface, LogroInterface } from '../../../interfaces/logros/logro-interface';
+import { EvaluacionInterface, FindContenidoInterface, FindEvaluacionInterface, FindLogroInterface, LogroInterface } from '../../../interfaces/logros/logro-interface';
 import { LogroService } from '../../../services/logro/logro-service';
 import { Evaluaciones } from '../evaluaciones/evaluaciones';
 import { EvaluacionService } from '../../../services/evaluacion/evaluacion-service';
 import { Contenidos } from "../contenidos/contenidos";
+import { ContenidoService } from '../../../services/contenidos/contenido-service';
 
 @Component({
   selector: 'app-grid-logros',
@@ -18,9 +19,11 @@ export class GridLogros {
   outDeleteLogro = output<LogroInterface[]>();
   inLogros = input.required<LogroInterface[]>();
   inFindLogros = input.required<FindLogroInterface | null>();
-  findEvaluacion = signal<FindEvaluacionInterface | null>(null);
+  findEvaluacion = signal<FindEvaluacionInterface | null>(null);  
+  findContenido = signal<FindContenidoInterface | null>(null);
   private logroService = inject(LogroService);
   private evaluationService = inject(EvaluacionService);
+  private contentService = inject(ContenidoService);
 
   viewDialog(logro: LogroInterface | null = null) {
     if (logro === null) {
@@ -44,6 +47,20 @@ export class GridLogros {
     });
 
     this.findEvaluacion.set(findEvaluation);
+  }
+
+  viewDialogContenidos(logro: LogroInterface) {
+    let findContenido: FindContenidoInterface = {
+      id: logro.id,
+      descLogro: logro.textoLg,
+      contenidos: []
+    };
+    this.contentService.getContenidosByIdLogro(logro.id).subscribe({
+      next: (resp) => {
+        findContenido.contenidos = resp;
+      }
+    });
+    this.findContenido.set(findContenido);
   }
 
   getCantLogros(): number {
@@ -86,6 +103,12 @@ export class GridLogros {
   handleCloseEvaluacion(event: boolean) {
     if (event) {
       this.findEvaluacion.set(null);
+    }
+  }
+
+    handleCloseContent(event: boolean) {
+    if (event) {
+      this.findContenido.set(null);
     }
   }
 

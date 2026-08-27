@@ -18,7 +18,6 @@ export class Evaluaciones {
   private fb = inject(FormBuilder);
   private evaluacionService = inject(EvaluacionService);
   inFindEvaluacion = input<FindEvaluacionInterface | null>();
-  outGetEvaluation = output<EvaluacionInterface>();
   outCloseEvaluacion = output<boolean>();
   tab: string = "0";
   notaSelected:string = "";
@@ -68,6 +67,7 @@ export class Evaluaciones {
     this.evaluacionService.postEvaluation(nota).subscribe((savedEvaluation) => {
       this.inFindEvaluacion()!.evaluations = savedEvaluation || [];
     });
+    this.tab = "0";
   }
 
 }
