@@ -1,0 +1,7 @@
+<app-find-study-to-comment (outStudient)="getStudients($event)"></app-find-study-to-comment>
+<app-grid-study-to-comment 
+    [InListStudient]="this.listStudients"
+    (outListStudient)="getStudients($event)"
+    [inSelectedStudient]="this.selectedStudient"
+    (outSelectedStudient)="changeSelectedStudient($event)"
+    ></app-grid-study-to-comment>

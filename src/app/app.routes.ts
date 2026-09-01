@@ -22,6 +22,10 @@ export const routes: Routes = [
       {
         path: 'notas',
         loadComponent: () => import('./page/notas/notas')
+      },
+      {
+        path:'comentarios',
+        loadComponent: () => import('./page/informes/comentario/comentario')
       }
     ]
   },

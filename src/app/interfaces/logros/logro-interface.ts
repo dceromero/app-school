@@ -96,3 +96,27 @@ export interface NotaOtherSaveInterface {
     notaNiv:     number;
     notaEU:      number;
 }
+
+export interface FindCommentInterface{
+    periodo:number;
+    grado:string;
+    grupo:string;
+}
+
+export interface SaveComment{
+    periodo:number;
+    grado:string;
+    grupo:string;
+    idmatricula:number;
+    comentario:string;
+}
+export interface RespComment{
+    periodo:number;
+    grado:string;
+    grupo:string;
+    idmatricula:number;
+    apellidos:string;
+    nombres:string;
+    comentario:string;
+    fecregistro: Date | null;
+}

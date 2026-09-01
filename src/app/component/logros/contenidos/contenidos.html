@@ -17,8 +17,8 @@
                     </p-tablist>
                     <p-tabpanels>
                         <p-tabpanel value="0">
-                            <p-table size="small" [value]="inFindContenido()?.contenidos ||[]" [paginator]="true" [rows]="5"
-                                [tableStyle]="{ 'min-width': '50rem' }" showGridlines stripedRows
+                            <p-table size="small" [value]="inFindContenido()?.contenidos ||[]" [paginator]="true"
+                                [rows]="5" [tableStyle]="{ 'min-width': '50rem' }" showGridlines stripedRows
                                 [rowsPerPageOptions]="[5, 10, 20]">
                                 <ng-template #header>
                                     <tr>
@@ -67,9 +67,12 @@
                                     </div>
                                 </div>
                                 <div class="grid grid-cols-1 mt-3">
-                                    <p-fieldset legend="Contenido">
-                                        <p-editor formControlName="contenido" [style]="{ height: '170px' }" />
-                                    </p-fieldset>
+                                    <p-floatlabel variant="on">
+                                        <textarea pTextarea id="txtContenido"
+                                            rows="3" cols="30" style="resize: none" fluid
+                                            formControlName="contenido"></textarea>
+                                        <label for="txtContenido">Contenido</label>
+                                    </p-floatlabel>
                                 </div>
                                 <div class="flex justify-center mt-3 gap-4">
                                     <p-button label="Guardar" (click)="saveContent()" severity="success" />

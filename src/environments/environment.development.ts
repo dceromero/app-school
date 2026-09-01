@@ -3,3 +3,4 @@ export const environment = {
     apiUrl: 'https://escolarweb.com.co/api',  
     //apiUrl: 'https://localhost:44379/api',  
 };
+

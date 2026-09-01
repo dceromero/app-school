@@ -1,0 +1,67 @@
+<form [formGroup]="formFindStudytoComment">
+  <p-fieldset legend="Buscar Estudiantes para comentario">
+    <div class="grid grid-cols-4 gap-1">
+      <div>
+        <p-floatlabel variant="on">
+          <p-select formControlName="grado" size="small" [options]="gradosResources.value()" optionValue="codGrado" optionLabel="descGrado"
+            [filter]="true" filterBy="descGrado" [showClear]="true" fluid (onChange)="selectedGrado()">
+            <ng-template #selectedItem let-selectedOption>
+              <div class="flex items-center gap-2">
+                <div>{{ selectedOption.codGrado }} - {{ selectedOption.descGrado }}</div>
+              </div>
+            </ng-template>
+            <ng-template let-grado #item>
+              <div class="flex items-center gap-2">
+                <div>{{ grado.codGrado }} - {{ grado.descGrado }}</div>
+              </div>
+            </ng-template>
+          </p-select>
+          <label for="txtGrado">Grado</label>
+        </p-floatlabel>
+      </div>
+      <div>
+              <p-floatlabel variant="on">
+          <p-select formControlName="grupo" size="small" [options]="groupsResources.value()" optionValue="idGrupo" optionLabel="grupo" [filter]="true"
+            filterBy="grupo" [showClear]="true" fluid>
+            <ng-template #selectedItem let-selectedOption>
+              <div class="flex items-center gap-2">
+                <div>{{ selectedOption.grupo }}</div>
+              </div>
+            </ng-template>
+            <ng-template let-grupo #item>
+              <div class="flex items-center gap-2">
+                <div>{{ grupo.grupo }}</div>
+              </div>
+            </ng-template>
+          </p-select>
+          <label for="txtGrupo">Grupo</label>
+        </p-floatlabel>
+      </div> 
+      <div>
+        <p-floatlabel variant="on">
+          <p-select formControlName="periodo" size="small" [options]="periodosResources.value()"  
+             [ngModel]="intPeriodo" optionValue="idPeriodo" optionLabel="periodo" [filter]="true"
+            filterBy="periodo" [showClear]="true" fluid>
+            <ng-template #selectedItem let-selectedOption>
+              <div class="flex items-center gap-2">
+                <div>{{ selectedOption.periodo }}</div>
+              </div>
+            </ng-template>
+            <ng-template let-periodo #item>
+              <div class="flex items-center gap-2">
+                <div>{{ periodo.periodo }}</div>
+              </div>
+            </ng-template>
+          </p-select>
+          <label for="txtPeriodo">Periodo</label>
+        </p-floatlabel>
+      </div>
+      <div>
+        <button pButton class="w-full" (click)="findStudy()" [disabled]="formFindStudytoComment.invalid">
+          <i class="pi pi-search" pButtonIcon></i>
+          <span pButtonLabel>Buscar</span>
+        </button>
+      </div>
+    </div>
+  </p-fieldset>
+</form>
