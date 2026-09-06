@@ -8,12 +8,12 @@
                         <th style="width:40%">Estudiantes</th>
                     </tr>
                 </ng-template>
-                <ng-template #body let-studient let-row = rowIndex >
+                <ng-template #body let-studient>
                     <tr>
                         <td style="font-size: 15px;">
                             <button pButton type="button" [label]="studient.apellidos + ' ' + studient.nombres"
                                 (click)="getStudient(studient)" class="p-button-text"
-                                [icon]="getIcon(studient,row )">
+                                [icon]="getIcon(studient )">
                             </button>
                         </td>
                     </tr>
@@ -28,7 +28,7 @@
                 <form [formGroup]="formCommentStudient">
                     <div>
                         <p-floatlabel variant="on">
-                            <textarea pTextarea id="txtComentario" rows="3" cols="30" style="resize: none" fluid
+                            <textarea [autoResize]="true" pTextarea id="txtComentario" rows="3" cols="30" style="resize: none" fluid
                                 formControlName="comment" [ngModel]="this.studient?.comentario"></textarea>
                             <label for="txtComentario">Comentario</label>
                         </p-floatlabel>

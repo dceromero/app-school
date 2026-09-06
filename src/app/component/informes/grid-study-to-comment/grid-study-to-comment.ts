@@ -49,7 +49,7 @@ export class GridStudyToComment {
     }
   }
 
-  getIcon(_studient: RespComment, index: number): string {
+  getIcon(_studient: RespComment): string {
     return _studient.comentario != ' ' ? 'pi pi-check' : 'pi pi-info-circle'
   }
 }
